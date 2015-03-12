@@ -6,6 +6,7 @@
 	width: 100%;
 	height: 100%;
 	z-index: 50000;
+	font-family: "Microsoft Yahei";
 }
 
 .mditor_toolBar {
@@ -22,7 +23,7 @@
     width: 40px;
     height: 40px;
     top: 10px;
-    right: 10px;
+    right: 20px;
     text-align: center;
     text-decoration: none;
     color: #aaa;
@@ -50,24 +51,24 @@
 
 .mditor_input textarea {
 	position: absolute;
-    display: block;
-    box-sizing: border-box;
+	display: block;
+	box-sizing: border-box;
 	top: 0;
-    left:  0;
+	left:  0;
 	width: 100%;
-    height: 100%;
+	height: 100%;
 	margin: 0px;
-	padding: 20px 15px;
-    border: none;
+  padding: 20px;
+	border: none;
 	resize: none;
-	background: #ddd;
-	color: #333;
-    font-size: 14px;
-	line-height: 2;
+	background: #232323;
+	color: #e6e1dc;
+	font-size: 18px;
+	font-family: inherit;
+	line-height: 1.6;
 }
 
 .mditor_input textarea:focus {
-	background: #eee;
 	box-shadow: 1px 1px 10px #000;
 	outline: none;
 }
@@ -83,7 +84,7 @@
 }
 
 .mditor_view .md_html {
-	padding: 30px 20px;
+	padding: 20px;
 }
 
 .mditor_miniBar{
