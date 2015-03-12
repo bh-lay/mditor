@@ -58,12 +58,12 @@
 	width: 100%;
 	height: 100%;
 	margin: 0px;
-  padding: 20px;
+  padding: 20px 15px 20px 26px;
 	border: none;
 	resize: none;
 	background: #232323;
 	color: #e6e1dc;
-	font-size: 18px;
+	font-size: 16px;
 	font-family: inherit;
 	line-height: 1.6;
 }

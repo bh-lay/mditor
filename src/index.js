@@ -1,6 +1,10 @@
 /**
+ * @author bh-lay
  * 
- */
+ * @github https://github.com/bh-lay/mditor
+ * @modified requires('Date')
+ * 
+ **/
 
 
 (function(global,doc,editor_factory,selection_factory,showdown_factory){
