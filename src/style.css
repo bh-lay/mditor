@@ -8,7 +8,12 @@
 	z-index: 50000;
 	font-family: "Microsoft Yahei";
 }
-
+.mditor_fullScreen textarea::selection{
+	background: #000;
+}
+.mditor_fullScreen textarea::-moz-selection{
+	background: #000;
+}
 .mditor_toolBar {
 	position: absolute;
 	top: 0px;
