@@ -124,9 +124,9 @@ define(function(doc){
 	
 	//exports
 	return {
-		'insertTxt' : insertTxt,
-		'Selection' : Selection,
-		'setPosition' : setPosition,
-		'getPosition' : getPosition
+		insertTxt : insertTxt,
+		Selection : Selection,
+		setPosition : setPosition,
+		getPosition : getPosition
 	};
 });

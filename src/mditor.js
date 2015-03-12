@@ -19,9 +19,9 @@
 		'setItem' : function(){}
 	};
 	
-	var miniBar_tpl = ' <div class="mditor_miniBar"><a href="javascript:void(0)" title="加粗" data-btn="bold"><i class="icon-bold"></i></a><a href="javascript:void(0)" title="斜体" data-btn="italic" ><i class="icon-italic"></i></a><a href="javascript:void(0)" title="链接" data-btn="link"><i class="icon-link"></i></a><a href="javascript:void(0)" title="图片" data-btn="image"><i class="icon-image"></i></a><a href="javascript:void(0)" title="代码" data-btn="code"><i class="icon-code"></i></a><a href="javascript:void(0)" title="撤销"><i class="icon-undo"></i></a><a href="javascript:void(0)" title="重做"><i class="icon-redo"></i></a><a href="javascript:void(0)" title="全屏" data-btn="fullscreen" style="float: right;"><i class="icon-fullscreen"></i></a></div>';
-	var editor_tpl = ' <div class="mditor_fullScreen"><div class="mditor_toolBar"><div class="mditor_tool_side"><a href="javascript:void(0)" title="预览" data-action="preview" class="mditor_preview"><i class="icon-view"></i></a><a href="javascript:void(0)" title="退出全屏" data-action="exist_fullscreen"><i class="icon-exist_fullscreen"></i></a></div><div class="mditor_tool_main"><a href="javascript:void(0)" title="加粗" data-action="bold"><i class="icon-bold">B</i></a><a href="javascript:void(0)" title="斜体" data-action="italic" ><i class="icon-italic">I</i></a><a href="javascript:void(0)" title="链接" data-action="link"><i class="icon-link">link</i></a><a href="javascript:void(0)" title="图片" data-action="image"><i class="icon-image">img</i></a><a href="javascript:void(0)" title="代码" data-action="code"><i class="icon-code"></></i></a></div></div><div class="mditor_main"><div class="mditor_input"><textarea>{content}</textarea></div><div class="mditor_view"><div class="mditor_viewer"><div class="md_html"></div></div></div></div></div>';
-	var style_css = '.mditor_fullScreen{background:#444;position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:50000;}.mditor_toolBar{position:absolute;top:0px;left:0px;width:100%;height:40px;background:#fff;box-shadow:0px 0px 5px #000;}.mditor_toolBar a{display:inline-block;width:30px;height:30px;border-radius:4px;line-height:30px;text-align:center;font-size:24px;color:#aaa;transition:0.2s;-moz-transition-duration:0.2s;-webkit-transition-duration:0.2s;-o-transition-duration:0.2s;}.mditor_toolBar a:hover{box-shadow:0px 0px 4px rgba(1,1,4,0.3);color:#333;}.mditor_toolBar a:active{box-shadow:0px 0px 4px rgba(1,1,4,0.3) inset;text-shadow:0px 0px 2px rgba(1,1,4,0.3);background:#aaa;color:#fff;}.mditor_tool_main{float:left;padding:5px 0px 0px 5px;}.mditor_tool_side{float:right;padding:5px 5px 0px 0px;}.mditor_main{position:absolute;top:50px;left:10px;right:10px;bottom:10px;}.mditor_input{position:absolute;top:0px;left:0px;width:50%;height:100%;z-index:0;}.mditor_input textarea{position:absolute;top:0px;left:0px;border:none;resize:none;background:#eee;color:#333;line-height:200%;margin:0px;padding:10px 15px;box-sizing:content-box;}.mditor_input textarea:focus{background:#fff;box-shadow:1px 1px 10px #000;outline:none;}.mditor_view{position:absolute;top:0px;right:0px;width:50%;height:100%;z-index:1;}.mditor_viewer{position:absolute;top:0px;right:0px;left:10px;height:100%;overflow:auto;background:#fff;}.mditor_view .md_html{padding:20px 10px;}.mditor_miniBar{height:35px;padding:4px 8px;background:#fff;box-shadow:0px 0px 5px rgba(0,0,0,0.3);position:relative;}.mditor_miniBar a{display:inline-block;width:26px;height:26px;border-radius:4px;line-height:26px;text-align:center;font-size:24px;color:#aaa;transition:0.2s;-moz-transition-duration:0.2s;-webkit-transition-duration:0.2s;-o-transition-duration:0.2s;}.mditor_miniBar a:hover{box-shadow:0px 0px 4px rgba(1,1,4,0.3);color:#333;}.mditor_miniBar a:active{box-shadow:0px 0px 4px rgba(1,1,4,0.3) inset;text-shadow:0px 0px 2px rgba(1,1,4,0.3);background:#aaa;color:#fff;}.mditor_preview{visibility:hidden;}@media screen and (max-width:645px){.mditor_input{width:100%;}.mditor_view{width:100%;display:none;}.mditor_preview{visibility:visible;}.mditor_viewer{left:0px;}}';
+	var editor_tpl = '<div class="mditor_fullScreen"><div class="mditor_input"><textarea spellcheck="false" autocapitalize="none" autocorrect="off">{content}</textarea></div><div class="mditor_view"><div class="md_html"></div></div><div class="mditor_toolBar"><a href="javascript:void(0)" title="退出全屏" class="exist_fullscreen">×</a></div></div>';
+	var miniBar_tpl = '<div class="mditor_miniBar"><a href="javascript:void(0)" title="全屏" class="mditor_full_btn">全屏</a></div>';
+	var style_css = '.mditor_fullScreen{background:#444;position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:50000;}.mditor_toolBar{position:absolute;top:0px;left:0px;width:100%;height:0;}.exist_fullscreen{display:block;position:absolute;width:40px;height:40px;top:10px;right:10px;text-align:center;text-decoration:none;color:#aaa;font:bold 28px/40px "simsun";transition:0.1s;}.exist_fullscreen:hover{background:#eee;color:#333;}.exist_fullscreen:active{background:#aaa;color:#fff;}.mditor_input{position:absolute;top:0px;left:0px;width:50%;height:100%;}.mditor_input textarea{position:absolute;display:block;box-sizing:border-box;top:0;left:0;width:100%;height:100%;margin:0px;padding:20px 15px;border:none;resize:none;background:#ddd;color:#333;font-size:14px;line-height:2;}.mditor_input textarea:focus{background:#eee;box-shadow:1px 1px 10px #000;outline:none;}.mditor_view{position:absolute;top:0px;right:0px;width:50%;height:100%;overflow:auto;background:#fff;}.mditor_view .md_html{padding:30px 20px;}.mditor_miniBar{line-height:30px;padding:0 2em;background:#fff;}@media screen and (max-width:700px){.mditor_input{width:100%;}.mditor_view{width:100%;display:none;}.mditor_preview{visibility:visible;}.mditor_viewer{left:0px;}}';
 	
 	function createStyleSheet(cssStr,attr){
 		var styleTag = document.createElement('style');
@@ -42,161 +42,164 @@
 		
 		return styleTag;
 	}
-		
+    
 	var private_head = document.head || document.getElementsByTagName('head')[0];
 	var styleSheet = createStyleSheet(style_css,{'data-module' : "mditor"});
 	private_head.appendChild(styleSheet);
 		
-	//激活状态的对象（最多同时存在一个）
-	var private_active = null;
 	
-	var tools_config = {
-		'bold' : {
-			'title' : '加粗',
-			'insert' : '**{{加粗}}**'
-		},
-		'italic' : {
-			'title' : '斜体',
-			'insert' : '*{{斜体}}*'
-		},
-		'link' : {
-			'title' : '链接',
-			'insert' : '[{{链接文字}}](http://)'
-		},
-		'image' : {	
-			'title' : '图片',
-			'insert' : '![{{图片描述}}](http://)'
-		},
-		'code' : {
-			'title' : '代码域',
-			'insert' : '\n\n```javascript\n{{//some code……}}\n```\n\n'
-		}
-	};
-	function resize(){
-		var parent_w = parseInt($(this._textarea).parent().width());
-		var parent_h = parseInt($(this._textarea).parent().height());
-		var padding_lr = parseInt($(this._textarea).css('paddingLeft'))*2;
-		var padding_tb = parseInt($(this._textarea).css('paddingTop'))*2;
-		$(this._textarea).css({
-			'width' : parent_w - padding_lr,
-			'height' : parent_h - padding_tb
-		});
-	}
-	$(window).resize(function(){
-		if(private_active){
-			resize.call(private_active);
-		}
-	});
-	function checkKeyBoard(code){
-		console.log(code,12);
-		if(code == 66){
-			this.action('bold');
-		}else if(code == 73){
-			this.action('italic');
-		}
-	}
-	function EDITOR(param){
-		if(private_active){
-			return
-		}
-		var me = this;
-		var param = param || {};
-		var content;
-		if(param['editFor']){
-			this.edit_for = param['editFor'];
-			content = this.edit_for.val();
-		}else{
-			content = param['content'] || '';
-		}
-		if(content.length < 2 && localStorage.getItem('mditor')){
-			content = localStorage.getItem('mditor');
-		}
+	function Full(param){
+		var me = this,
+            content = param.content || '';
 		
-		var new_tpl = editor_tpl.replace('{content}',content);
-		
-		this.dom = $(new_tpl);
-		this._textarea = this.dom.find('textarea')[0];
-		this._view = this.dom.find('.md_html');
+		this.dom = $(editor_tpl.replace('{content}',content));
+		this._textarea = this.dom.find('textarea');
+        
+		this._viewScreen = this.dom.find('.mditor_view');
+		this._viewer = this._viewScreen.find('.md_html');
 		this.closeFn = param['closeFn'] || null;
+        this.editor = new MDITOR(this._textarea,{
+            needFull : false,
+            onchange : function(){
+                me.render();
+            }
+        });
 		//初始化
 		$('body').append(this.dom);
+        
 		this.render();
-		resize.call(this);
-		private_active = this;
-		var inputDelay;
-		$(this._textarea).on('keydown keyup',function(e){
-			clearTimeout(inputDelay);
-			inputDelay = setTimeout(function(){
-				me.render();
-			},100);
-		});
-		$(this._textarea).on('keyup',function(e){
-			if(e.ctrlKey){
-				checkKeyBoard.call(me,e.keyCode)
-				return false;
-			}
-		});
 		
-		this.dom.find('.mditor_toolBar').on('click','a',function(){
-			var act_str = $(this).attr('data-action');
-			me.action(act_str);
-		});
+		this.dom.find('.exist_fullscreen').on('click',function(){
+            me.close();
+        });
+        var isAdapt = false;
+        function scroll(){
+            if(isAdapt){
+                return;
+            }
+            isAdapt = true;
+            var scrollDom = this;
+            setTimeout(function(){
+                var percent = $(scrollDom).scrollTop() / scrollDom.scrollHeight;
+                var moveDom = (scrollDom == me._viewScreen[0]) ? me._textarea : me._viewScreen;
+                moveDom.animate({
+                    scrollTop: percent * moveDom[0].scrollHeight
+                },90);
+                setTimeout(function(){
+                    isAdapt = false;
+                },140);
+            },200);
+        }
+        this._textarea.on('scroll',scroll);
+        this._viewScreen.on('scroll',scroll);
+        
 	}
-	EDITOR.prototype = {
-		'getContent' : function(){
+	Full.prototype = {
+        render : function(){
+            var html = this.editor.getHtml();
+            this._viewer.html(html);
+        },
+        close : function(){
+            this.closeFn && this.closeFn.call(this);
+            this.dom.remove();
+        }
+    };
+    
+	var action_config = {
+		//加粗
+        bold : {
+			insert : '**{{加粗}}**'
+		},
+        //斜体
+		italic : {
+			insert : '*{{斜体}}*'
+		},
+        //链接
+		link : {
+			insert : '[{{链接文字}}](http://)'
+		},
+        //图片
+		image : {
+			insert : '![{{图片描述}}](http://)'
+		},
+        //代码域
+		code : {
+			insert : '\n\n```javascript\n{{//some code……}}\n```\n\n'
+		}
+	};
+	var keyCode_config = {
+		c66 : 'bold',
+		c73 : 'italic',
+		c76 : 'link',
+		c71 : 'image',
+		c75 : 'code'
+	};
+    
+    function MDITOR($area,param){
+        if(! (this instanceof MDITOR)){
+            return new MDITOR($area,param);
+        }
+        param = param || {};
+        var me = this,
+            needFull = typeof param.needFull == 'boolean' ? param.needFull : true;
+        
+        this._textarea = $area;
+        this.onchange = param.onchange || null;
+        //绑定快捷键
+		var inputDelay;
+        this._textarea.on('keydown',function(e){
+            var key = (e.ctrlKey ? 'c' : '') + (e.shiftKey ? 's' : '') + e.keyCode;
+            if(keyCode_config[key]){
+                me.action(keyCode_config[key]);
+                e.preventDefault();
+            }else{
+                clearTimeout(inputDelay);
+                inputDelay = setTimeout(function(){
+                    me.onchange && me.onchange();
+                },200);
+            }
+        });
+        if(needFull){
+            var bar = $(miniBar_tpl);
+            this._textarea.before(bar);
+            bar.on('click','.mditor_full_btn',function(){
+                new Full({
+                    content: me.getContent(),
+                    closeFn: function(){
+                        me._textarea.val(this.editor.getContent());
+                    }
+                });
+            });
+        }
+        
+    }
+    MDITOR.prototype = {
+		getContent : function(){
 			var content = $(this._textarea).val();
 			localStorage.setItem('mditor',content);
 			return content;
 		},
-		'getHtml' : function(){
-			console.log('refresh')
+		getHtml : function(){
 			var text = this.getContent();
 			var converter = new Showdown.converter();
 		 	var html = converter.makeHtml(text);
 		 	return html;
 		},
-		'render' : function(){
-			var html = this.getHtml();
-			this._view.html(html);
-		},
-		'close' : function(){
-			private_active = null;
-			this.closeFn && this.closeFn(this.getContent());
-			this.dom.remove();
-		},
-		'action' : function(type){
-			if( !tools_config[type]){
+		action : function(type){
+			if( !action_config[type]){
 				return;
 			}
-			var selection_txt = utils.Selection(this._textarea)[2];
-			var txt = tools_config[type]['insert'];
+			var selection_txt = utils.Selection(this._textarea[0])[2];
+			var txt = action_config[type]['insert'];
 			txt = txt.replace(/{{(.+?)}}/,function(a,b){
-				console.log(a,b)
 				return selection_txt ? selection_txt : b;
 			});
-			console.log(type,txt);
-			utils.insertTxt(this._textarea,txt);
-			this.render();
-		/**
-			if(name == 'exist_fullscreen'){
-					me.close();
-				}else if(name == "preview"){
-					var viewDom = me.dom.find('.mditor_view');
-					if(viewDom.css('display') == 'none'){
-						viewDom.show();
-					}else{
-						viewDom.hide();
-					}
-				}
-		**/
+			utils.insertTxt(this._textarea[0],txt);
+            this._textarea.trigger('change');
 		}
 	};
-	
-	return {
-		'create' : function(param){
-			return new EDITOR(param);
-		}
-	};
+    return MDITOR;
+    
 },function(doc){
 	//set
 	var setPosition = (function() {
@@ -315,10 +318,10 @@
 	
 	//exports
 	return {
-		'insertTxt' : insertTxt,
-		'Selection' : Selection,
-		'setPosition' : setPosition,
-		'getPosition' : getPosition
+		insertTxt : insertTxt,
+		Selection : Selection,
+		setPosition : setPosition,
+		getPosition : getPosition
 	};
 },function() {
 //

@@ -3,13 +3,13 @@ var fs = require('fs');
 function getStyleSheet(src){
 	var cssStr = fs.readFileSync(src,'UTF-8')
 	
-	//过滤注释
+	//杩囨护娉ㄩ噴
 	var txt = cssStr.replace(/\/\*.*?\*\//g,'');
-	//过滤换行
+	//杩囨护鎹㈣
 	var txt = txt.replace(/\r|\n/g,'');
-	//过滤连续空格
+	//杩囨护杩炵画绌烘牸
 	txt = txt.replace(/\s+/g,' ');
-	//过滤不必要的空格
+	//杩囨护涓嶅繀瑕佺殑绌烘牸
 	txt = txt.replace(/\s*({|}|;|:)\s*/g,'$1');
 	
 	return txt;
@@ -24,11 +24,11 @@ function getJS(src){
 
 function getTemplate(src){
 	var tmp = fs.readFileSync(src,'UTF-8')
-	//过滤换行
+	//杩囨护鎹㈣
 	var tmp = tmp.replace(/\r|\n/g,'');
-	//过滤连续空格
+	//杩囨护杩炵画绌烘牸
 	tmp = tmp.replace(/\s+/g,' ');
-	//过滤标签间的空格
+	//杩囨护鏍囩闂寸殑绌烘牸
 	tmp = tmp.replace(/\>\s+\</g,'><');
 	tmp = "'" + tmp + "'";
 	return tmp;
@@ -39,17 +39,17 @@ function getTemplate(src){
 function checkMainFiles(src){
 	var str = fs.readFileSync(src,'UTF-8');
 	str = str.replace(/requires\(((?:\,|\s|\w|\.|\/|\'|\")+)\)/g,function(a,b){
-		//过滤无意义的空格
+		//杩囨护鏃犳剰涔夌殑绌烘牸
 		b = b.replace(/\s*\,\s*/g,',');
-		//过滤引号
+		//杩囨护寮曞彿
 		b = b.replace(/\'|\"/g,'');
 		
-		//获取参数
+		//鑾峰彇鍙傛暟
 		var args = b.split(/\,/g);
 		
 		console.log('find require',args);
 		
-		//判断资源类型
+		//鍒ゆ柇璧勬簮绫诲瀷
 		if(args[0].match(/\.css$/)){
 			console.log('loading and min css\n');
 			return "'" + getStyleSheet(args[0]) + "'";
@@ -76,12 +76,13 @@ function write(src,str){
 //var txt = getJS('utils.js');
 //
 //
-
-fs.watch('./',function(type,filename){
+function build(type,filename){
 	if(filename == 'mditor.js'){
 		return
 	}
 	var newContent = checkMainFiles('index.js');
 	write('mditor.js',newContent);
 	console.log('successful!\n');
-});
+}
+fs.watch('./',build);
+fs.watch('./template/',build);

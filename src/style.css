@@ -1,28 +1,97 @@
-.mditor_fullScreen{background:#444;position: fixed;top:0px;left:0px;width:100%;height:100%;z-index: 50000;}
-.mditor_toolBar{position: absolute;top:0px;left:0px;width:100%;height:40px;background:#fff;box-shadow:0px 0px 5px #000;}
-.mditor_toolBar a{display:inline-block;width:30px;height:30px;border-radius:4px;line-height:30px;text-align:center;font-size: 24px;color:#aaa;
-	transition:0.2s;-moz-transition-duration: 0.2s;-webkit-transition-duration: 0.2s;-o-transition-duration: 0.2s;}
-.mditor_toolBar a:hover{box-shadow:0px 0px 4px rgba(1,1,4,0.3);color:#333;}
-.mditor_toolBar a:active{box-shadow:0px 0px 4px rgba(1,1,4,0.3) inset;text-shadow:0px 0px 2px rgba(1,1,4,0.3);background:#aaa;color:#fff;}
-.mditor_tool_main{float: left;padding:5px 0px 0px 5px;}
-.mditor_tool_side{float: right;padding:5px 5px 0px 0px;}
+.mditor_fullScreen {
+	background: #444;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 50000;
+}
 
-.mditor_main{position: absolute;top:50px;left:10px;right:10px;bottom:10px;}
-.mditor_input{position: absolute;top:0px;left:0px;width:50%;height:100%;z-index:0;}
-.mditor_input textarea{position: absolute;top:0px;left:0px;border:none;resize:none;background:#eee;color:#333;line-height:200%;margin:0px;padding:10px 15px;box-sizing: content-box;}
-.mditor_input textarea:focus{background: #fff;box-shadow: 1px 1px 10px #000;outline:none;}
-.mditor_view{position: absolute;top:0px;right:0px;width:50%;height:100%;z-index: 1;}
-.mditor_viewer{position: absolute;top:0px;right:0px;left:10px;height:100%;overflow: auto;background:#fff;}
-.mditor_view .md_html{padding:20px 10px;}
+.mditor_toolBar {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 0;
+}
 
-/*Ð¡¹¤¾ßÀ¸*/
-.mditor_miniBar{height:35px;padding:4px 8px;background:#fff;box-shadow:0px 0px 5px rgba(0,0,0,0.3);position:relative;}
-.mditor_miniBar a{display:inline-block;width:26px;height:26px;border-radius:4px;line-height:26px;text-align:center;font-size: 24px;color:#aaa;
-	transition:0.2s;-moz-transition-duration: 0.2s;-webkit-transition-duration: 0.2s;-o-transition-duration: 0.2s;}
-.mditor_miniBar a:hover{box-shadow:0px 0px 4px rgba(1,1,4,0.3);color:#333;}
-.mditor_miniBar a:active{box-shadow:0px 0px 4px rgba(1,1,4,0.3) inset;text-shadow:0px 0px 2px rgba(1,1,4,0.3);background:#aaa;color:#fff;}
-.mditor_preview{visibility: hidden;}
-@media screen and (max-width: 645px){
+.exist_fullscreen {
+    display: block;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    right: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #aaa;
+    font: bold 28px/40px "simsun";
+    transition: 0.1s;
+}
+
+.exist_fullscreen:hover {
+	background: #eee;
+	color: #333;
+}
+
+.exist_fullscreen:active {
+	background: #aaa;
+	color: #fff;
+}
+
+.mditor_input {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 50%;
+	height: 100%;
+}
+
+.mditor_input textarea {
+	position: absolute;
+    display: block;
+    box-sizing: border-box;
+	top: 0;
+    left:  0;
+	width: 100%;
+    height: 100%;
+	margin: 0px;
+	padding: 20px 15px;
+    border: none;
+	resize: none;
+	background: #ddd;
+	color: #333;
+    font-size: 14px;
+	line-height: 2;
+}
+
+.mditor_input textarea:focus {
+	background: #eee;
+	box-shadow: 1px 1px 10px #000;
+	outline: none;
+}
+
+.mditor_view {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 50%;
+	height: 100%;
+	overflow: auto;
+	background: #fff;
+}
+
+.mditor_view .md_html {
+	padding: 30px 20px;
+}
+
+.mditor_miniBar{
+    line-height: 30px;
+    padding: 0 2em;
+    background: #fff;
+}
+@media screen and (max-width: 700px){
 	.mditor_input{width: 100%;}
 	.mditor_view{width: 100%;display: none;}
 	.mditor_preview{visibility:visible;}
