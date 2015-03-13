@@ -9,18 +9,21 @@
     body{
       overflow-y: scroll;
     }
-	.cnt{
+	.wrapper{
 		width: 700px;
     max-width: 96%;
 		margin: auto;
     padding: 100px 0
 	}
+  .wrapper textarea{
+    width: 400px;
+    height: 200px;
+  }
 	</style>
 </head>
 <body>
-<div id="wrapper">
-	<div class="cnt">
-		<textarea>
+<div class="wrapper">
+  <textarea class="areaA">
 欢迎使用Mditor
 ======
 Mditor是一个轻量级的markdown编辑器。取名自markdown + editor，用于实现页面markdown输入框的便利操作。
@@ -33,73 +36,25 @@ Mditor是一个轻量级的markdown编辑器。取名自markdown + editor，用�
 - **加粗文字** `Ctrl + B`
 - *斜体文字* `Ctrl + I`
 - [链接文字](http://bh-lay.com/) `Ctrl + L`
-- 图片![skin](src/baoman.jpg) `Ctrl + G`
+- 图片![暴漫](src/baoman.jpg) `Ctrl + G`
 - `code`
-- 代码块`Ctrl + K`（如下）：
-``` javascript
-/**
- * 检测是否为数字
- * 兼容字符类数字 &#39;23&#39;
- */
-function isNum(ipt){
-	return (ipt !== &#39;&#39;) &amp;&amp; (ipt == +ipt) ? true : false;
-}
-```
-
----------
-
-##如何使用
-###一、页面内放置待使用的文本域textarea，如：
-```html
-&lt;textarea id="mditor"&gt;……&lt;/textarea&gt;
-```
-###二、引入jQuery和mditor，并执行mditor的初始化，
- 注：因为后续mditor会逐渐脱离对jQuery的依赖，请使用原生dom对象，而非jQuery对象。
-
-```html
-&lt;script type=&quot;text/javascript&quot; src=&quot;src/jquery.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;src/mditor.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-  var ele_textarea = document.getElementByID('mditor');
-  var editor = new mditor(ele_textarea);
-&lt;/script&gt;
-```
-##高级操作
-实例化mditor时，可以传入自定义参数
-```javascript
-var editor = new mditor(document.getElementByID('mditor'),{
-  //自定义html文本的class
-  previewClass : 'article',
-  //内容变动回调
-  onchange : function(content){
-    //……
-  }
-});
-```
-
-实例化后的mditor，可以通过javascript进行操作，如：
-```javascript
-//获取转换后的html
-editor.getHtml();
-
-//获取markdown格式内容
-editor.getContent();
-
-//进入预览界面
-editor.preview();
-
-//返回编辑界面
-editor.edit();
-```
-		
-		</textarea>
-	</div>
+- 代码块`Ctrl + K`：
+</textarea>
+  <br/>
+  <input type="button" value="获取内容" onclick="getContent()" />
+  <input type="button" value="获取内容" onclick="getHtml()" />
+</textarea>
 </div>
 	<script type="text/javascript" src="src/jquery.js"></script>
 	<script type="text/javascript" src="src/mditor.js"></script>
 	<script type="text/javascript">
-		var editor = new mditor($('textarea'));
-    editor.preview();
+		var editor = new mditor($('.areaA')[0]);
+    function getContent(){
+      alert(editor.getContent());
+    }
+    function getHtml(){
+      alert(editor.getHtml());
+    }
 	</script>
 </body>
 </html>

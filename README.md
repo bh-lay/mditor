@@ -10,9 +10,9 @@ Mditor是一个轻量级的markdown编辑器。取名自markdown + editor，用�
 - **加粗文字** `Ctrl + B`
 - *斜体文字* `Ctrl + I`
 - [链接文字](http://bh-lay.com/) `Ctrl + L`
-- 插入图片    `Ctrl + G`  ![skin](src/baoman.jpg)
+- 图片![暴漫](src/baoman.jpg) `Ctrl + G`
 - `code`
-- 代码块`Ctrl + K`（如下）：
+- 代码块`Ctrl + K`：
 ``` javascript
 /**
  * 检测是否为数字
