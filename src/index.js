@@ -118,6 +118,9 @@
 		 	var html = converter.makeHtml(text);
 		 	return html;
 		},
+    insert : function(txt){
+      utils.insertTxt(this._$textarea[0],txt);
+    },
 		action : function(type){
 			if( !action_config[type]){
 				return;
@@ -250,6 +253,11 @@
     render : function(){
       var html = this.editor.getHtml();
       this._$viewer.html(html);
+    },
+    insert : function(txt){
+      //修复预览状态下，插入渲染不及时的问题
+		 	this.editor.insert(txt);
+      this.render();
     },
     preview : function(){
       this._$textarea.hide();

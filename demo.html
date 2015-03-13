@@ -43,6 +43,7 @@ Mditor是一个轻量级的markdown编辑器。取名自markdown + editor，用�
   <br/>
   <input type="button" value="获取内容" onclick="getContent()" />
   <input type="button" value="获取内容" onclick="getHtml()" />
+  <input type="button" value="插入内容" onclick="insert()" />
 </textarea>
 </div>
 	<script type="text/javascript" src="src/jquery.js"></script>
@@ -54,6 +55,9 @@ Mditor是一个轻量级的markdown编辑器。取名自markdown + editor，用�
     }
     function getHtml(){
       alert(editor.getHtml());
+    }
+    function insert(){
+      editor.insert(' **XXXXX** ');
     }
 	</script>
 </body>

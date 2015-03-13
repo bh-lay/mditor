@@ -62,6 +62,9 @@ editor.getHtml();
 //获取markdown格式内容
 editor.getContent();
 
+//插入内容
+editor.insert('**挤啊挤**')
+
 //进入预览界面
 editor.preview();
 
