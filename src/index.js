@@ -56,20 +56,24 @@
     bold : {
 			insert : '**{{加粗}}**'
 		},
-        //斜体
+    //斜体
 		italic : {
 			insert : '*{{斜体}}*'
 		},
-        //链接
+    //链接
 		link : {
 			insert : '[{{链接文字}}](http://)'
 		},
-        //图片
+    //图片
 		image : {
 			insert : '![{{图片描述}}](http://)'
 		},
-        //代码域
+    //代码
 		code : {
+			insert : '`code`'
+		},
+    //代码域
+		precode : {
 			insert : '\n\n```javascript\n{{//some code……}}\n```'
 		},
     tab : {
@@ -81,7 +85,8 @@
 		c66 : 'bold',
 		c71 : 'image',
 		c73 : 'italic',
-		c75 : 'code',
+		c75 : 'precode',
+		cs75 : 'code',
 		c76 : 'link',
 	};
     
@@ -274,4 +279,4 @@
     }
 	};
   return MINI;
-},requires('selection.js'),requires('showdown.js'));
+},requires('selection.min.js'),requires('showdown.min.js'));
