@@ -70,15 +70,19 @@
 		},
         //代码域
 		code : {
-			insert : '\n\n```javascript\n{{//some code……}}\n```\n\n'
-		}
+			insert : '\n\n```javascript\n{{//some code……}}\n```'
+		},
+    tab : {
+      insert : '  '
+    }
 	};
 	var keyCode_config = {
+    9: 'tab',
 		c66 : 'bold',
-		c73 : 'italic',
-		c76 : 'link',
 		c71 : 'image',
-		c75 : 'code'
+		c73 : 'italic',
+		c75 : 'code',
+		c76 : 'link',
 	};
     
   function EDITOR($area,param){
@@ -97,7 +101,7 @@
       }else{
         clearTimeout(inputDelay);
         inputDelay = setTimeout(function(){
-          me.onchange && me.onchange();
+          me.onchange && me.onchange.call(this,$(me._$textarea).val());
         },200);
       }
     });
@@ -134,9 +138,10 @@
    */
 	function Full(param){
 		var me = this,
-        content = param.content || '';
+        content = param.content || '',
+        previewClass = param.previewClass || 'article';
 		
-		this._$dom = $(editor_tpl.replace('{content}',content));
+		this._$dom = $(editor_tpl);
 		this._$textarea = this._$dom.find('textarea');
 		this._$viewScreen = this._$dom.find('.mditor_view');
 		this._$viewer = this._$viewScreen.find('.md_html');
@@ -149,7 +154,8 @@
     });
 		//初始化
 		$('body').append(this._$dom);
-    
+    this._$viewer.addClass(previewClass);
+    this._$textarea.val(content);
 		this.render();
 		
 		this._$dom.find('.exist_fullscreen').on('click',function(){
@@ -175,7 +181,7 @@
     }
     this._$textarea.on('scroll',scroll);
     this._$viewScreen.on('scroll',scroll);
-        
+    $('body').addClass('mditor-overflow');
 	}
 	Full.prototype = {
     render : function(){
@@ -185,27 +191,31 @@
     close : function(){
       this.closeFn && this.closeFn.call(this);
       this._$dom.remove();
+      $('body').removeClass('mditor-overflow');
     }
   };
   /**
    * mini编辑器
    *
    **/
-	function MINI($area,param){
+	function MINI(area,param){
     if(! (this instanceof MINI)){
-        return new MINI($area,param);
+        return new MINI(area,param);
     }
     param = param || {};
 		var me = this,
-        content = param.content || '';
+        previewClass = param.previewClass || 'article';
 		
 		this._$dom = $(mini_tpl);
-    this._$textarea = $area;
+    this._$textarea = $(area);
     this._$viewer = this._$dom.find('.mditor-mini-preview');
     this._$btn_preview = this._$dom.find('.mditor-btn-preview');
     this._$btn_edit = this._$dom.find('.mditor-btn-edit');
-    this.editor = new EDITOR(this._$textarea);
+    this.editor = new EDITOR(this._$textarea,{
+      onchange: param.onchange || null
+    });
 		
+    this._$viewer.addClass(previewClass);
     //将编辑器dom放置在textarea前
     this._$textarea.before(this._$dom);
     //再将textarea移入编辑器内
@@ -214,6 +224,7 @@
     this._$dom.on('click','.mditor-btn-full',function(){
       new Full({
         content: me.getContent(),
+        previewClass: previewClass,
         closeFn: function(){
           me._$textarea.val(this.editor.getContent());
           me.render();

@@ -6,126 +6,100 @@
 	<title>mditor</title>
 	<link rel="stylesheet" href="src/article.css">
 	<style type="text/css">
-	html,body{
-		background:#eee;
-		margin:0px;
-		padding:0px;
-		height:100%;
-		position:relative;
-		overflow: hidden;
-		font-family:"Microsoft Yahei";
-	}
-	.cpt{
-		height: 60px;
-	}
+    body{
+      overflow-y: scroll;
+    }
 	.cnt{
 		width: 700px;
-        max-width: 96%;
+    max-width: 96%;
 		margin: auto;
+    padding: 100px 0
 	}
-	.cnt textarea{
-    box-sizing: border-box;
-		width: 100%;
-		height: 200px;
-		padding: 20px;
-		font-size: 14px;
-		border: none;
-	}
-	
 	</style>
 </head>
 <body>
 <div id="wrapper">
-	<div class="cpt">
-	</div>
 	<div class="cnt">
 		<textarea>
-Mditor是个啥玩意儿
-Mditor是一个页面内的markdown编辑器。取名自markdown + editor。
+欢迎使用Mditor
 ======
-> Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。 —— 维基百科
+Mditor是一个轻量级的markdown编辑器。取名自markdown + editor，用于实现页面markdown输入框的便利操作。
 
-# 欢迎使用Mditor
-
-
-**Mditor**是一款专为印象笔记（Evernote）打造的Markdown编辑器，通过精心的设计与技术实现，配合印象笔记强大的存储和同步功能，带来前所未有的书写体验。特点概述：
- 
-- **功能丰富** ：支持高亮代码块、*LaTex* 公式、流程图，本地图片上传甚至截图粘贴，工作学习好帮手；
-- **得心应手** ：简洁高效的编辑器，提供桌面[离线客户端][1]，支持移动端 Web；
-- **深度整合** ：支持选择笔记本和添加标签，支持从印象笔记跳转编辑，轻松管理。
-
--------------------
-
-
-## Markdown简介
-
+##Markdown是什么
 > Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。    —— [维基百科](https://zh.wikipedia.org/wiki/Markdown)
 
-正如您在阅读的这份文档，它使用简单的符号标识不同的标题，将某些文字标记为**粗体**或者*斜体*，创建一个[链接](http://www.example.com)或一个脚注[^demo]。下面列举了几个高级功能，更多语法请按`Ctrl + /`查看帮助。 
 
-### 代码块
+##常用格式及快捷键
+- **加粗文字** `Ctrl + B`
+- *斜体文字* `Ctrl + I`
+- [链接文字](http://bh-lay.com/) `Ctrl + L`
+- 插入图片    `Ctrl + G`  ![skin](src/skin.png)
+- `code`
+- 代码块`Ctrl + K`（如下）：
 ``` javascript
 /**
  * 检测是否为数字
- * 兼容字符类数字 '23'
+ * 兼容字符类数字 &#39;23&#39;
  */
 function isNum(ipt){
-	return (ipt !== '') && (ipt == +ipt) ? true : false;
+	return (ipt !== &#39;&#39;) &amp;&amp; (ipt == +ipt) ? true : false;
 }
 ```
 
-## 印象笔记相关
-
-### 离线存储
-**Mditor**使用浏览器离线存储将内容实时保存在本地，不必担心网络断掉或浏览器崩溃。为了节省空间和避免冲突，已同步至印象笔记并且不再修改的笔记将删除部分本地缓存，不过依然可以随时通过`文档管理`打开。
-
-## 编辑器相关
-### 设置
-右侧系统菜单（快捷键`Ctrl + M`）的`设置`中，提供了界面字体、字号、自定义CSS、vim/emacs 键盘模式等高级选项。
-
-### 快捷键
-
-帮助    `Ctrl + /`
-同步文档    `Ctrl + S`
-创建文档    `Ctrl + Alt + N`
-最大化编辑器    `Ctrl + Enter`
-预览文档 `Ctrl + Alt + Enter`
-文档管理    `Ctrl + O`
-系统菜单    `Ctrl + M` 
-
-加粗    `Ctrl + B`
-插入图片    `Ctrl + G`
-插入链接    `Ctrl + L`
-提升标题    `Ctrl + H`
-
-
-## 反馈与建议
-- 微博：[@Mditor](http://weibo.com/u/2788354117)，[@GGock](http://weibo.com/ggock "开发者个人账号")
-- 邮箱：<hustgock@gmail.com>
-
 ---------
-感谢阅读这份帮助文档。请点击右上角，绑定印象笔记账号，开启全新的记录与分享体验吧。
 
+##如何使用
+###一、页面内放置待使用的文本域textarea，如：
+```html
+&lt;textarea id="mditor"&gt;……&lt;/textarea&gt;
+```
+###二、引入jQuery和mditor，并执行mditor的初始化，
+ 注：因为后续mditor会逐渐脱离对jQuery的依赖，请使用原生dom对象，而非jQuery对象。
 
+```html
+&lt;script type=&quot;text/javascript&quot; src=&quot;src/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;src/mditor.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+  var ele_textarea = document.getElementByID('mditor');
+  var editor = new mditor(ele_textarea);
+&lt;/script&gt;
+```
+##高级操作
+实例化mditor时，可以传入自定义参数
+```javascript
+var editor = new mditor(document.getElementByID('mditor'),{
+  //自定义html文本的class
+  previewClass : 'article',
+  //内容变动回调
+  onchange : function(content){
+    //……
+  }
+});
+```
 
+实例化后的mditor，可以通过javascript进行操作，如：
+```javascript
+//获取转换后的html
+editor.getHtml();
 
-[^demo]: 这是一个示例脚注。请查阅 [MultiMarkdown 文档](https://github.com/fletcher/MultiMarkdown/wiki/MultiMarkdown-Syntax-Guide#footnotes) 关于脚注的说明。 **限制：** 印象笔记的笔记内容使用 [ENML][4] 格式，基于 HTML，但是不支持某些标签和属性，例如id，这就导致`脚注`和`TOC`无法正常点击。
+//获取markdown格式内容
+editor.getContent();
 
+//进入预览界面
+editor.preview();
 
-  [1]: https://chrome.google.com/webstore/detail/kidnkfckhbdkfgbicccmdggmpgogehop
-  [2]: http://adrai.github.io/flowchart.js/
-  [3]: http://bramp.github.io/js-sequence-diagrams/
-  [4]: https://dev.yinxiang.com/doc/articles/enml.php
-
-
-
+//返回编辑界面
+editor.edit();
+```
+		
 		</textarea>
 	</div>
 </div>
 	<script type="text/javascript" src="src/jquery.js"></script>
 	<script type="text/javascript" src="src/mditor.js"></script>
 	<script type="text/javascript">
-		console.log(new mditor($('textarea')));
+		var editor = new mditor($('textarea'));
+    editor.preview();
 	</script>
 </body>
 </html>
