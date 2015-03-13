@@ -92,10 +92,56 @@
 	padding: 20px;
 }
 
-.mditor_miniBar{
-    line-height: 30px;
-    padding: 0 2em;
-    background: #fff;
+/*mini编辑器*/
+.mditor-mini{
+  line-height: 30px;
+  background: #fff;
+  border: 1px solid #ddd;
+	font-family: "Microsoft Yahei";
+}
+.mditor-mini-bar{
+  height: 40px;
+  background: #eee;
+}
+.mditor-mini-tab{
+  float: left;
+}
+.mditor-mini-tab a{
+  display: block;
+  float: left;
+  line-height: 40px;
+  padding: 0 2.4em;
+  height: 40px;
+  background: #eee;
+  line-height: 40px;
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+}
+.mditor-mini-tab a.active{
+  background: #fff;
+}
+.mditor-mini-side{
+  float: right;
+}
+.mditor-mini-preview{
+  display: none;
+  min-height: 200px;
+  padding: 30px 20px;
+}
+.mditor-mini textarea{
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 300px;
+  resize:vertical;
+  padding: 20px;
+  font-size: 14px;
+  font-family: inherit;
+  border: none;
+}
+.mditor-mini textarea:focus{
+  outline: none;
 }
 @media screen and (max-width: 700px){
 	.mditor_input{width: 100%;}

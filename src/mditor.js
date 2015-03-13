@@ -2,13 +2,13 @@
  * @author bh-lay
  * 
  * @github https://github.com/bh-lay/mditor
- * @modified 2015-3-12 20:26
+ * @modified 2015-3-13 13:51
  * 
  **/
 
 
 (function(global,doc,editor_factory,selection_factory,showdown_factory){
-	var utils = selection_factory(doc);
+  var utils = selection_factory(doc);
 	var showdown = showdown_factory();
 	
 	var mditor = editor_factory(global,doc,utils,showdown);
@@ -23,8 +23,8 @@
 	};
 	
 	var editor_tpl = '<div class="mditor_fullScreen"><div class="mditor_input"><textarea spellcheck="false" autocapitalize="none" autocorrect="off">{content}</textarea></div><div class="mditor_view"><div class="md_html article"></div></div><div class="mditor_toolBar"><a href="javascript:void(0)" title="退出全屏" class="exist_fullscreen">×</a></div></div>';
-	var miniBar_tpl = '<div class="mditor_miniBar"><a href="javascript:void(0)" title="全屏" class="mditor_full_btn">全屏</a></div>';
-	var style_css = '.mditor_fullScreen{background:#444;position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:50000;font-family:"Microsoft Yahei";}.mditor_fullScreen textarea::selection{background:#000;}.mditor_fullScreen textarea::-moz-selection{background:#000;}.mditor_toolBar{position:absolute;top:0px;left:0px;width:100%;height:0;}.exist_fullscreen{display:block;position:absolute;width:40px;height:40px;top:10px;right:20px;text-align:center;text-decoration:none;color:#aaa;font:bold 28px/40px "simsun";transition:0.1s;}.exist_fullscreen:hover{background:#eee;color:#333;}.exist_fullscreen:active{background:#aaa;color:#fff;}.mditor_input{position:absolute;top:0px;left:0px;width:50%;height:100%;}.mditor_input textarea{position:absolute;display:block;box-sizing:border-box;top:0;left:0;width:100%;height:100%;margin:0px;padding:20px 15px 20px 26px;border:none;resize:none;background:#232323;color:#e6e1dc;font-size:16px;font-family:inherit;line-height:1.6;}.mditor_input textarea:focus{box-shadow:1px 1px 10px #000;outline:none;}.mditor_view{position:absolute;top:0px;right:0px;width:50%;height:100%;overflow:auto;background:#fff;}.mditor_view .md_html{padding:20px;}.mditor_miniBar{line-height:30px;padding:0 2em;background:#fff;}@media screen and (max-width:700px){.mditor_input{width:100%;}.mditor_view{width:100%;display:none;}.mditor_preview{visibility:visible;}.mditor_viewer{left:0px;}}';
+	var mini_tpl = '<div class="mditor-mini"><div class="mditor-mini-bar"><div class="mditor-mini-tab"><a href="javascript:void(0)" title="全屏" class="mditor-btn-edit active">编辑</a><a href="javascript:void(0)" title="全屏" class="mditor-btn-preview">预览</a></div><div class="mditor-mini-side"><a href="javascript:void(0)" title="全屏" class="mditor-btn-full">全屏</a></div></div><div class="mditor-mini-preview article"></div></div>';
+	var style_css = '.mditor_fullScreen{background:#444;position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:50000;font-family:"Microsoft Yahei";}.mditor_fullScreen textarea::selection{background:#000;}.mditor_fullScreen textarea::-moz-selection{background:#000;}.mditor_toolBar{position:absolute;top:0px;left:0px;width:100%;height:0;}.exist_fullscreen{display:block;position:absolute;width:40px;height:40px;top:10px;right:20px;text-align:center;text-decoration:none;color:#aaa;font:bold 28px/40px "simsun";transition:0.1s;}.exist_fullscreen:hover{background:#eee;color:#333;}.exist_fullscreen:active{background:#aaa;color:#fff;}.mditor_input{position:absolute;top:0px;left:0px;width:50%;height:100%;}.mditor_input textarea{position:absolute;display:block;box-sizing:border-box;top:0;left:0;width:100%;height:100%;margin:0px;padding:20px 15px 20px 26px;border:none;resize:none;background:#232323;color:#e6e1dc;font-size:16px;font-family:inherit;line-height:1.6;}.mditor_input textarea:focus{box-shadow:1px 1px 10px #000;outline:none;}.mditor_view{position:absolute;top:0px;right:0px;width:50%;height:100%;overflow:auto;background:#fff;}.mditor_view .md_html{padding:20px;}.mditor-mini{line-height:30px;background:#fff;border:1px solid #ddd;font-family:"Microsoft Yahei";}.mditor-mini-bar{height:40px;background:#eee;}.mditor-mini-tab{float:left;}.mditor-mini-tab a{display:block;float:left;line-height:40px;padding:0 2.4em;height:40px;background:#eee;line-height:40px;color:#333;font-size:14px;text-decoration:none;}.mditor-mini-tab a.active{background:#fff;}.mditor-mini-side{float:right;}.mditor-mini-preview{display:none;min-height:200px;padding:30px 20px;}.mditor-mini textarea{display:block;box-sizing:border-box;width:100%;min-height:300px;resize:vertical;padding:20px;font-size:14px;font-family:inherit;border:none;}.mditor-mini textarea:focus{outline:none;}@media screen and (max-width:700px){.mditor_input{width:100%;}.mditor_view{width:100%;display:none;}.mditor_preview{visibility:visible;}.mditor_viewer{left:0px;}}';
 	
 	function createStyleSheet(cssStr,attr){
 		var styleTag = document.createElement('style');
@@ -50,62 +50,6 @@
 	private_head.appendChild(styleSheet);
 		
 	
-	function Full(param){
-		var me = this,
-        content = param.content || '';
-		
-		this.dom = $(editor_tpl.replace('{content}',content));
-		this._textarea = this.dom.find('textarea');
-        
-		this._viewScreen = this.dom.find('.mditor_view');
-		this._viewer = this._viewScreen.find('.md_html');
-		this.closeFn = param['closeFn'] || null;
-    this.editor = new MDITOR(this._textarea,{
-      needFull : false,
-      onchange : function(){
-        me.render();
-      }
-    });
-		//初始化
-		$('body').append(this.dom);
-    
-		this.render();
-		
-		this.dom.find('.exist_fullscreen').on('click',function(){
-      me.close();
-    });
-    var isAdapt = false;
-    function scroll(){
-      if(isAdapt){
-        return;
-      }
-      isAdapt = true;
-      var scrollDom = this;
-      setTimeout(function(){
-        var percent = $(scrollDom).scrollTop() / scrollDom.scrollHeight;
-        var moveDom = (scrollDom == me._viewScreen[0]) ? me._textarea : me._viewScreen;
-        moveDom.animate({
-          scrollTop: percent * moveDom[0].scrollHeight
-        },90);
-        setTimeout(function(){
-          isAdapt = false;
-        },140);
-      },200);
-    }
-    this._textarea.on('scroll',scroll);
-    this._viewScreen.on('scroll',scroll);
-        
-	}
-	Full.prototype = {
-    render : function(){
-      var html = this.editor.getHtml();
-      this._viewer.html(html);
-    },
-    close : function(){
-      this.closeFn && this.closeFn.call(this);
-      this.dom.remove();
-    }
-  };
     
 	var action_config = {
 		//加粗
@@ -137,19 +81,15 @@
 		c75 : 'code'
 	};
     
-  function MDITOR($area,param){
-    if(! (this instanceof MDITOR)){
-        return new MDITOR($area,param);
-    }
+  function EDITOR($area,param){
     param = param || {};
-    var me = this,
-        needFull = typeof param.needFull == 'boolean' ? param.needFull : true;
+    var me = this;
     
-    this._textarea = $area;
+    this._$textarea = $area;
     this.onchange = param.onchange || null;
     //绑定快捷键
 		var inputDelay;
-    this._textarea.on('keydown',function(e){
+    this._$textarea.on('keydown',function(e){
       var key = (e.ctrlKey ? 'c' : '') + (e.shiftKey ? 's' : '') + e.keyCode;
       if(keyCode_config[key]){
         me.action(keyCode_config[key]);
@@ -161,22 +101,10 @@
         },200);
       }
     });
-    if(needFull){
-      var bar = $(miniBar_tpl);
-      this._textarea.before(bar);
-      bar.on('click','.mditor_full_btn',function(){
-        new Full({
-          content: me.getContent(),
-          closeFn: function(){
-            me._textarea.val(this.editor.getContent());
-          }
-        });
-      });
-    }
   }
-  MDITOR.prototype = {
+  EDITOR.prototype = {
 		getContent : function(){
-			var content = $(this._textarea).val();
+			var content = $(this._$textarea).val();
 			localStorage.setItem('mditor',content);
 			return content;
 		},
@@ -190,15 +118,143 @@
 			if( !action_config[type]){
 				return;
 			}
-			var selection_txt = utils.Selection(this._textarea[0])[2];
+			var selection_txt = utils.Selection(this._$textarea[0])[2];
 			var txt = action_config[type]['insert'];
 			txt = txt.replace(/{{(.+?)}}/,function(a,b){
 				return selection_txt ? selection_txt : b;
 			});
-			utils.insertTxt(this._textarea[0],txt);
+			utils.insertTxt(this._$textarea[0],txt);
 		}
 	};
-  return MDITOR;
+  
+
+  /**
+   * 全屏编辑器
+   * 
+   */
+	function Full(param){
+		var me = this,
+        content = param.content || '';
+		
+		this._$dom = $(editor_tpl.replace('{content}',content));
+		this._$textarea = this._$dom.find('textarea');
+		this._$viewScreen = this._$dom.find('.mditor_view');
+		this._$viewer = this._$viewScreen.find('.md_html');
+    
+		this.closeFn = param['closeFn'] || null;
+    this.editor = new EDITOR(this._$textarea,{
+      onchange : function(){
+        me.render();
+      }
+    });
+		//初始化
+		$('body').append(this._$dom);
+    
+		this.render();
+		
+		this._$dom.find('.exist_fullscreen').on('click',function(){
+      me.close();
+    });
+    var isAdapt = false;
+    function scroll(){
+      if(isAdapt){
+        return;
+      }
+      isAdapt = true;
+      var scrollDom = this;
+      setTimeout(function(){
+        var percent = $(scrollDom).scrollTop() / scrollDom.scrollHeight;
+        var moveDom = (scrollDom == me._$viewScreen[0]) ? me._$textarea : me._$viewScreen;
+        moveDom.animate({
+          scrollTop: percent * moveDom[0].scrollHeight
+        },90);
+        setTimeout(function(){
+          isAdapt = false;
+        },140);
+      },200);
+    }
+    this._$textarea.on('scroll',scroll);
+    this._$viewScreen.on('scroll',scroll);
+        
+	}
+	Full.prototype = {
+    render : function(){
+      var html = this.editor.getHtml();
+      this._$viewer.html(html);
+    },
+    close : function(){
+      this.closeFn && this.closeFn.call(this);
+      this._$dom.remove();
+    }
+  };
+  /**
+   * mini编辑器
+   *
+   **/
+	function MINI($area,param){
+    if(! (this instanceof MINI)){
+        return new MINI($area,param);
+    }
+    param = param || {};
+		var me = this,
+        content = param.content || '';
+		
+		this._$dom = $(mini_tpl);
+    this._$textarea = $area;
+    this._$viewer = this._$dom.find('.mditor-mini-preview');
+    this._$btn_preview = this._$dom.find('.mditor-btn-preview');
+    this._$btn_edit = this._$dom.find('.mditor-btn-edit');
+    this.editor = new EDITOR(this._$textarea);
+		
+    //将编辑器dom放置在textarea前
+    this._$textarea.before(this._$dom);
+    //再将textarea移入编辑器内
+    this._$dom[0].appendChild(this._$textarea[0]);
+    //全屏
+    this._$dom.on('click','.mditor-btn-full',function(){
+      new Full({
+        content: me.getContent(),
+        closeFn: function(){
+          me._$textarea.val(this.editor.getContent());
+          me.render();
+        }
+      });
+    });
+    //预览
+    this._$btn_preview.on('click',function(){
+      me.preview();
+    });
+    //退出预览
+    this._$btn_edit.on('click',function(){
+      me.edit();
+    });
+	}
+  MINI.prototype = {
+		getContent : function(){
+			return this.editor.getContent();;
+		},
+		getHtml : function(){
+		 	return this.editor.getHtml();
+		},
+    render : function(){
+      var html = this.editor.getHtml();
+      this._$viewer.html(html);
+    },
+    preview : function(){
+      this._$textarea.hide();
+      this.render();
+      this._$viewer.show();
+      this._$btn_edit.removeClass('active');
+      this._$btn_preview.addClass('active');
+    },
+    edit : function(){
+      this._$textarea.show();
+      this._$viewer.hide().html('');
+      this._$btn_edit.addClass('active');
+      this._$btn_preview.removeClass('active');
+    }
+	};
+  return MINI;
 },function(doc){
 	//set
 	var setPosition = (function() {
