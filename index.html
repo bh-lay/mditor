@@ -4,25 +4,18 @@
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 	<title>mditor</title>
+	<link rel="stylesheet" href="src/page.css">
 	<link rel="stylesheet" href="src/article.css">
-	<style type="text/css">
-    body{
-      overflow-y: scroll;
-    }
-	.wrapper{
-		width: 700px;
-    max-width: 96%;
-		margin: auto;
-    padding: 100px 0
-	}
-  .wrapper textarea{
-    width: 400px;
-    height: 200px;
-  }
-	</style>
 </head>
 <body>
+	<div class="header">
+		<h1>Mditor</h1>
+		<p>一款轻量级的markdown编辑器</p>
+	</div>
 <div class="wrapper">
+   <div class="introduce article">
+     <p><strong>Github：</strong><a href="https://github.com/bh-lay/mditor" target="_blank">https://github.com/bh-lay/mditor</a></p>
+   </div>
   <textarea class="areaA">
 欢迎使用Mditor
 ======
@@ -30,7 +23,6 @@ Mditor是一个轻量级的markdown编辑器。取名自markdown + editor，用�
 
 ##Markdown是什么
 > Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。    —— [维基百科](https://zh.wikipedia.org/wiki/Markdown)
-
 
 ##常用格式及快捷键
 - **加粗文字** `Ctrl + B`
@@ -41,8 +33,8 @@ Mditor是一个轻量级的markdown编辑器。取名自markdown + editor，用�
 - 代码块`Ctrl + K`：
 </textarea>
   <br/>
-  <input type="button" value="获取内容" onclick="getContent()" />
-  <input type="button" value="获取内容" onclick="getHtml()" />
+  <input type="button" value="获取markdown" onclick="getContent()" />
+  <input type="button" value="获取html内容" onclick="getHtml()" />
   <input type="button" value="插入内容" onclick="insert()" />
 </textarea>
 </div>

@@ -1,0 +1,29 @@
+body{
+  overflow-y: scroll;
+  font-family: "Microsoft Yahei";
+  margin: 0;
+  padding: 0;
+}
+.header{
+  padding: 100px 0;
+  background :#06a;
+  text-align: center;
+  color: #fff;
+}
+.header h1{
+  font-size: 40px;
+  margin-bottom: .3em;
+}
+
+.introduce{
+  padding: 50px 0;
+}
+.wrapper{
+  width: 700px;
+  max-width: 96%;
+  margin: 0 auto 100px;
+}
+.wrapper textarea{
+  width: 400px;
+  height: 200px;
+}
