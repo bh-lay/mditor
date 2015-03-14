@@ -1,6 +1,6 @@
 欢迎使用Mditor
 ======
-Mditor是一个轻量级的markdown编辑器。取名自markdown + editor，用于实现页面markdown输入框的便利操作。
+Mditor是一款轻量级的markdown编辑器。取名自markdown + editor，用于实现页面markdown输入框的便利操作。
 
 ##Markdown是什么
 > Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。    —— [维基百科](https://zh.wikipedia.org/wiki/Markdown)
@@ -27,11 +27,11 @@ function isNum(ipt){
 
 
 ##如何使用
-###一、页面内放置待使用的文本域textarea
+###第一步、页面内放置待使用的文本域textarea
 ```html
 <textarea id="mditor">……</textarea>
 ```
-###二、引入jQuery和Mditor，并初始化，
+###第二步、引入jQuery和Mditor，并初始化，
  注：因为后续Mditor会逐渐脱离对jQuery的依赖，参数请使用原生dom对象，而非jQuery对象。
 
 ```html
