@@ -80,24 +80,37 @@
       insert : '  '
     }
 	};
-	var keyCode_config = {
+  var keyCode_config = {
     9: 'tab',
-		c66 : 'bold',
-		c71 : 'image',
-		c73 : 'italic',
-		c75 : 'precode',
-		cs75 : 'code',
-		c76 : 'link',
-	};
-    
+    c66 : 'bold',
+    c71 : 'image',
+    c73 : 'italic',
+    c75 : 'precode',
+    cs75 : 'code',
+    c76 : 'link',
+  };
+  /**
+   * 设置输入框属性
+   */
+  function setAreaProp(elem){
+    elem.spellcheck = false;
+    elem.autocapitalize = 'none';
+    elem.autocorrect = 'off';
+  }
+  /**
+   * 编辑类
+   *
+   **/
   function EDITOR($area,param){
     param = param || {};
     var me = this;
     
     this._$textarea = $area;
     this.onchange = param.onchange || null;
+    //设置输入框属性
+    setAreaProp(this._$textarea[0]);
     //绑定快捷键
-		var inputDelay;
+    var inputDelay;
     this._$textarea.on('keydown',function(e){
       var key = (e.ctrlKey ? 'c' : '') + (e.shiftKey ? 's' : '') + e.keyCode;
       if(keyCode_config[key]){
