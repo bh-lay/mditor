@@ -11,32 +11,119 @@
 	<div class="header">
 		<h1>Mditor</h1>
 		<p>一款轻量级的markdown编辑器</p>
+		<a href="https://github.com/bh-lay/mditor" target="_blank" class="btn">Github</a>
 	</div>
-<div class="wrapper">
-   <div class="introduce article">
-     <p><strong>Github：</strong><a href="https://github.com/bh-lay/mditor" target="_blank">https://github.com/bh-lay/mditor</a></p>
-   </div>
-  <textarea class="areaA">
+<div class="section sectionA">
+  <div class="wrapper">
+    <textarea class="areaA">
 欢迎使用Mditor
 ======
 Mditor是一个轻量级的markdown编辑器。取名自markdown + editor，用于实现页面markdown输入框的便利操作。
 
 ##Markdown是什么
 > Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。    —— [维基百科](https://zh.wikipedia.org/wiki/Markdown)
+    </textarea>
+    <br/>
+    <input type="button" value="获取markdown" onclick="getContent()" />
+    <input type="button" value="获取html" onclick="getHtml()" />
+    <input type="button" value="插入内容" onclick="insert()" />
+  </div>
+</div>
+<div class="section sectionB">
+     <div class="wrapper article">
+      <h3>源码下载</h3>
+       <p><a href="https://github.com/bh-lay/mditor/archive/master.zip" target="_blank">https://github.com/bh-lay/mditor/archive/master.zip</a></p>
+     </div>
+</div>
+<div class="section sectionC">
+  <div class="wrapper article">
+    <h1>欢迎使用Mditor</h1>
 
-##常用格式及快捷键
-- **加粗文字** `Ctrl + B`
-- *斜体文字* `Ctrl + I`
-- [链接文字](http://bh-lay.com/) `Ctrl + L`
-- 图片![暴漫](src/baoman.jpg) `Ctrl + G`
-- `code` `Ctrl + Shift + K`
-- 代码块`Ctrl + K`：
-</textarea>
-  <br/>
-  <input type="button" value="获取markdown" onclick="getContent()" />
-  <input type="button" value="获取html内容" onclick="getHtml()" />
-  <input type="button" value="插入内容" onclick="insert()" />
-</textarea>
+    <p>Mditor是一款轻量级的markdown编辑器。取名自markdown + editor，用于实现页面markdown输入框的便利操作。</p>
+
+    <h2>Markdown是什么</h2>
+
+    <blockquote>
+      <p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。    —— <a href="https://zh.wikipedia.org/wiki/Markdown">维基百科</a></p>
+    </blockquote>
+
+    <h2>常用格式及快捷键</h2>
+
+    <ul>
+    <li><strong>加粗文字</strong> <code>Ctrl + B</code></li>
+    <li><em>斜体文字</em> <code>Ctrl + I</code></li>
+    <li><a href="http://bh-lay.com/">链接文字</a> <code>Ctrl + L</code></li>
+    <li>图片<img src="src/baoman.jpg" alt="暴漫" title=""> <code>Ctrl + G</code></li>
+    <li><code>code</code> <code>Ctrl + Shift + K</code></li>
+    <li>代码块 <code>Ctrl + K</code>：</li>
+    </ul>
+
+    <pre><code class=" javascript">/**
+ * 检测是否为数字
+ * 兼容字符类数字 '23'
+ */
+function isNum(ipt){
+    return (ipt !== '') &amp;&amp; (ipt == +ipt) ? true : false;
+}
+    </code></pre>
+
+    <hr>
+
+    <h2>如何使用</h2>
+
+    <h3>第一步、页面内放置待使用的文本域textarea</h3>
+
+    <pre><code class="html">&lt;textarea id="mditor"&gt;……&lt;/textarea&gt;
+    </code></pre>
+
+    <h3>第二步、引入jQuery和Mditor，并初始化，</h3>
+
+    <p>注：因为后续Mditor会逐渐脱离对jQuery的依赖，参数请使用原生dom对象，而非jQuery对象。</p>
+
+    <pre><code class="html">&lt;script type="text/javascript" src="src/jquery.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="src/mditor.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+  //获取textarea dom对象
+  var ele_textarea = document.getElementByID('mditor');
+  //实例化Mditor
+  var editor = new mditor(ele_textarea);
+&lt;/script&gt;
+    </code></pre>
+
+    <h2>高级操作</h2>
+
+    <p>为了保证编辑、发布的显示效果一致，需要按照对应站点文章样式的css来展示编辑时的效果，默认显示效果class为<code>article</code>，可参照下面定义方式更改类名。</p>
+
+    <h3>一、实例化Mditor时，可以传入自定义参数</h3>
+
+    <pre><code class="javascript">var editor = new mditor(document.getElementByID('mditor'),{
+  //自定义显示效果class
+  previewClass : 'article',
+  //内容变动回调
+  onchange : function(content){
+    //……
+  }
+});
+    </code></pre>
+
+    <h3>二、可以通过javascript对实例化后的Mditor进行操作，如：</h3>
+
+    <pre><code class="javascript">//获取转换后的html
+editor.getHtml();
+
+//获取markdown格式内容
+editor.getContent();
+
+//插入内容
+editor.insert('**挤啊挤**')
+
+//进入预览界面
+editor.preview();
+
+//返回编辑界面
+editor.edit();
+    </code></pre>
+  </div>
 </div>
 	<script type="text/javascript" src="src/jquery.js"></script>
 	<script type="text/javascript" src="src/mditor.js"></script>

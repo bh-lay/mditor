@@ -5,7 +5,7 @@ body{
   padding: 0;
 }
 .header{
-  padding: 100px 0;
+  padding: 80px 0;
   background :#06a;
   text-align: center;
   color: #fff;
@@ -20,10 +20,64 @@ body{
 }
 .wrapper{
   width: 700px;
-  max-width: 96%;
-  margin: 0 auto 100px;
+  margin: auto;
 }
-.wrapper textarea{
+@media (max-width: 800px){
+  .wrapper{
+    width: auto;
+    margin: 0 20px;
+  }
+}
+
+.section{
+  padding: 50px 0;
+}
+.sectionA{
+  
+}
+.sectionA textarea{
   width: 400px;
   height: 200px;
+}
+.sectionB{
+  padding: 30px 0;
+  background: #eee;
+}
+
+
+.btn {
+  display: inline-block;
+  min-width: 40px;
+  height: 32px;
+  padding: 0 1em;
+  line-height: 33px;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  white-space: nowrap;
+  outline: none;
+  text-decoration: none;
+  background: #fa7d3c;
+  background: -moz-linear-gradient(top, #fa7d3c 0%, #f55f10 100%);
+  background: -webkit-linear-gradient(top, #fa7d3c 0%, #f55f10 100%);
+  background: -o-linear-gradient(top, #fa7d3c 0%, #f55f10 100%);
+  background: -ms-linear-gradient(top, #fa7d3c 0%, #f55f10 100%);
+  background: linear-gradient(top bottom, #fa7d3c 0%, #f55f10 100%);
+  transition: all 0.08s linear;
+  -moz-transition: all 0.08s linear;
+  -webkit-transition: all 0.08s linear;
+  -o-transition: all 0.08s linear;
+}
+.btn:hover {
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+  background: #f4722e;
+  background: -moz-linear-gradient(top, #f4722e 0%, #f05807 100%);
+  background: -webkit-linear-gradient(top, #f4722e 0%, #f05807 100%);
+  background: -o-linear-gradient(top, #f4722e 0%, #f05807 100%);
+  background: -ms-linear-gradient(top, #f4722e 0%, #f05807 100%);
+  background: linear-gradient(top bottom, #f4722e 0%, #f05807 100%);
 }
