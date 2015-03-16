@@ -117,13 +117,7 @@
 		code :  '`code`',
     //代码域
 		precode : '\n\n```javascript\n{{//some code……}}\n```',
-    tab : '  ',
-    redo : function(){
-      this.redo();
-    },
-    undo : function(){
-      this.undo();
-    }
+    tab : '  '
 	};
   var keyCode_config = {
     9: 'tab',
@@ -237,8 +231,9 @@
       utils.insertTxt(this._$textarea[0],txt);
       me.emit('change',[$(me._$textarea).val()]);
     },
-		action : function(type){
-			var config = action_config[type];
+		action : function(name){
+			var config = action_config[name];
+      //第一顺序，执行action_config的插入方法
       if(typeof(config) == 'string'){
         var selection_txt = utils.getPosition(this._$textarea[0])[2];
         config = config.replace(/{{(.+?)}}/,function(a,b){
@@ -247,7 +242,11 @@
         utils.insertTxt(this._$textarea[0],config);
         this._logMe();
       }else if(typeof(config) == 'function'){
+        //第二顺序，检查action_config是否为function
         config.call(this);
+      }else if(typeof(this[name]) == 'function'){
+        //第三顺序,从自身原型链上找方法
+        this[name].call(this);
       }
 		}
 	};
