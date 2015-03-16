@@ -2,7 +2,7 @@
  * @author bh-lay
  * 
  * @github https://github.com/bh-lay/mditor
- * @modified 2015-3-16 18:40
+ * @modified 2015-3-16 19:1
  * 
  **/
 
@@ -97,7 +97,7 @@
       return this.data[--this.current];
     },
     redo: function (){
-      if(this.data.length > this.current){
+      if(this.data.length > this.current + 1){
         return this.data[++this.current];
       }else{
         return null;

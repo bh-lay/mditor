@@ -97,7 +97,7 @@
       return this.data[--this.current];
     },
     redo: function (){
-      if(this.data.length > this.current){
+      if(this.data.length > this.current + 1){
         return this.data[++this.current];
       }else{
         return null;
