@@ -106,32 +106,18 @@
   };
 	var action_config = {
 		//加粗
-    bold : {
-			insert : '**{{加粗}}**'
-		},
+    bold : '**{{加粗}}**',
     //斜体
-		italic : {
-			insert : '*{{斜体}}*'
-		},
+		italic : '*{{斜体}}*',
     //链接
-		link : {
-			insert : '[{{链接文字}}](http://)'
-		},
+		link : '[{{链接文字}}](http://)',
     //图片
-		image : {
-			insert : '![{{图片描述}}](http://)'
-		},
+		image : '![{{图片描述}}](http://)',
     //代码
-		code : {
-			insert : '`code`'
-		},
+		code :  '`code`',
     //代码域
-		precode : {
-			insert : '\n\n```javascript\n{{//some code……}}\n```'
-		},
-    tab : {
-      insert : '  '
-    },
+		precode : '\n\n```javascript\n{{//some code……}}\n```',
+    tab : '  ',
     redo : function(){
       this.redo();
     },
@@ -161,6 +147,8 @@
   
   /**
    * 编辑类
+   *  change:任何字符改动都会触发
+   *  input: 用户输入才会触发
    *
    **/
   function EDITOR($area,param){
@@ -178,8 +166,8 @@
     //绑定快捷键
     var inputDelay;
     this._$textarea.on('keydown',function(e){
+      //监听热键
       var key = (e.ctrlKey ? 'c' : '') + (e.shiftKey ? 's' : '') + e.keyCode;
-   //   console.log(key);
       if(keyCode_config[key]){
         me.action(keyCode_config[key]);
         e.preventDefault();
@@ -199,7 +187,7 @@
     this.content = this._$textarea.val();
     
     //记录初始状态
-    this._logMe(this._$textarea.val());
+    this._logMe();
     //当进行输入操作时，记录状态
     this.on('input',function(val){
       me._logMe(val);
@@ -220,7 +208,7 @@
     _logMe: function(val){
       this._log.push({
         selection : utils.getPosition(this._$textarea[0]),
-        content: val
+        content: val || this._$textarea.val()
       });
     },
     //绘制当前步骤
@@ -252,11 +240,12 @@
 		action : function(type){
 			var config = action_config[type];
       if(typeof(config) == 'string'){
-        var selection_txt = utils.Selection(this._$textarea[0])[2];
+        var selection_txt = utils.getPosition(this._$textarea[0])[2];
         config = config.replace(/{{(.+?)}}/,function(a,b){
 				  return selection_txt ? selection_txt : b;
         });
-        utils.insertTxt(this._$textarea[0],txt);
+        utils.insertTxt(this._$textarea[0],config);
+        this._logMe();
       }else if(typeof(config) == 'function'){
         config.call(this);
       }

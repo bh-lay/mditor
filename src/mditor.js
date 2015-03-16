@@ -2,16 +2,15 @@
  * @author bh-lay
  * 
  * @github https://github.com/bh-lay/mditor
- * @modified 2015-3-16 14:32
+ * @modified 2015-3-16 18:40
  * 
  **/
 
 
 (function(global,doc,editor_factory,selection_factory,maked_factory){
-  var utils = selection_factory(doc);
-	var maked = maked_factory();
-	
-	var mditor = editor_factory(global,doc,utils,maked);
+  var utils = selection_factory(doc),
+      maked = maked_factory(),
+      mditor = editor_factory(global,doc,utils,maked);
 	global.mditor = global.mditor || mditor;
 	global.define && define(function(){
 		return mditor;
@@ -26,6 +25,7 @@
 	var mini_tpl = '<div class="mditor-mini"><div class="mditor-mini-bar"><div class="mditor-mini-tab"><a href="javascript:void(0)" title="编辑" class="mditor-btn-edit active"><i class="mditor-icon "></i><span>编辑</span></a><a href="javascript:void(0)" title="预览" class="mditor-btn-preview"><i class="mditor-icon "></i><span>预览</span></a></div><div class="mditor-mini-side"><a href="javascript:void(0)" title="全屏" class="mditor-btn-full"><i class="mditor-icon "></i></a></div></div><div class="mditor-mini-preview"></div></div>';
 	var style_css = '.mditor-icon{display:inline-block;width:15px;height:15px;margin-right:5px;vertical-align:middle;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAPCAYAAABwfkanAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAqtJREFUeNrUllmIjWEYx883xjAyGGtjKZQL0mkkuSAiFJncMBcYIs2NZA2RpexTk2WSseRopETCnKLckQuDso7cWHJlG9myc/we/b/T29t3zpkckqd+8513+573fd7/83wTpFKp2P9mhfYnCIJsc2xwDEyEMrgO+/7lYQNznmPTZkm4A4dgJ1xh3ba8nQdBA4/v8B7uWTAipk2HsdDBgozfubEcEauAKTAMDkAX9Z+2dfmCnYI49Ic+UBxBL40PgP22rjDLhkdBNeyAG1AKR2ER3HKi5a7pB1Vy8g1+QHt4aQeFpnCiNv0cPsNy6Cwfvr2DD1ALD9OajrAhsBo2y1ECrsE5qIMnEWvmwAwdcA98gTbwEabCKmiGdc4aO0yJDpnJSkQ3eOOe2LVB0vAktWugQb/LNDbCuWKzZeqPq10ufe6FSvWV6vAJx2873U6jciVKHiv0bpNo0a913qa7a0KV2hvVjikaSSWFq8t56u+qeXG1R8JA730xbXq947e35tRkiPRCjZeHfgu8a0hIe6bdpTBcydhDsjgMF72XjoaV8ErtydJek54nlMyhrbGbyqfqFDj12nR4WRubCeNhmsat74wO5NsC6CjpmJ1XhMNIVyoXQtuq/AjlYbq3sLfNII9i53tR5NbpIxJ6hZLJkmoWvNXVXFCkY172h9VjMUyAtXBbV1mt6mE3c1LyqdUG58vvJn6fhQ2tCLBVsaGsqw+rhxXuFmX4YFiiDTeqGtTleOFuVYItcBOOwy6neliZHAd3Tc9eDllJe9yKkteiOemS90jyqJfDB3re95xks2NwCWYr8m6dfgHb4aq3pqckYjfw1ckL1zpJIoHklpZHUvrtK82Zs6dKsEj7E/97eJ/xZgUt52c83PRBOj7BM9Xp14pW7G9u+nftpwADABwSFeQIwYanAAAAAElFTkSuQmCC)}.mditor-overflow{overflow:hidden !important;}.mditor_fullScreen{background:#444;position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:50000;font-family:"Microsoft Yahei";}.mditor_fullScreen textarea::selection{background:#000;}.mditor_fullScreen textarea::-moz-selection{background:#000;}.mditor_toolBar{position:absolute;top:0px;left:0px;width:100%;height:0;}.exist_fullscreen{display:block;position:absolute;width:40px;height:40px;top:10px;right:20px;text-align:center;text-decoration:none;color:#aaa;font:bold 28px/40px "simsun";transition:0.1s;}.exist_fullscreen:hover{background:#eee;color:#333;text-decoration:none;}.exist_fullscreen:active{background:#aaa;color:#fff;}.mditor_input{position:absolute;top:0px;left:0px;width:50%;height:100%;}.mditor_input textarea{position:absolute;display:block;box-sizing:border-box;top:0;left:0;width:100%;height:100%;margin:0px;padding:20px 15px 20px 26px;border:none;resize:none;background:#232323;color:#e6e1dc;font-size:16px;font-family:inherit;line-height:1.6;}.mditor_input textarea:focus{box-shadow:1px 1px 10px #000;outline:none;}.mditor_view{position:absolute;top:0px;right:0px;width:50%;height:100%;overflow:auto;background:#fff;}.mditor_view .md_html{padding:20px;}.mditor-mini{background:#fff;border:1px solid #ddd;font-family:"Microsoft Yahei";}.mditor-mini-bar{height:40px;line-height:35px;background:#eee;}.mditor-mini-tab{float:left;}.mditor-mini-bar a{display:block;float:left;padding:0 2.4em;height:40px;background:#eee;color:#333;font-size:14px;text-decoration:none;}.mditor-mini-bar a span{display:inline-block;vertical-align:middle;height:24px;line-height:24px;}.mditor-btn-preview i{background-position:-15px 0;}.mditor-btn-full i{background-position:-30px 0;}.mditor-mini-bar a:hover{background:#f4f4f4;}.mditor-mini-bar a.active{background:#fff;}.mditor-mini-side{float:right;}.mditor-mini-preview{display:none;min-height:200px;padding:30px 20px;}.mditor-mini textarea{display:block;box-sizing:border-box;width:100%;min-height:300px;resize:vertical;padding:20px;font-size:14px;font-family:inherit;border:none;}.mditor-mini textarea:focus{outline:none;}@media screen and (max-width:700px){.mditor_input{width:100%;}.mditor_view{width:100%;display:none;}.mditor_preview{visibility:visible;}.mditor_viewer{left:0px;}}';
 	
+  // 创建style标签
 	function createStyleSheet(cssStr,attr){
 		var styleTag = document.createElement('style');
 		
@@ -49,35 +49,80 @@
 	var styleSheet = createStyleSheet(style_css,{'data-module' : "mditor"});
 	private_head.appendChild(styleSheet);
 		
-	
-    
+	//处理自定义事件
+	function ON(eventName,callback){
+		this._events = this._events || {};
+		//事件堆无该事件，创建一个事件堆
+		if(!this._events[eventName]){
+			this._events[eventName] = [];
+		}
+		this._events[eventName].push(callback);
+		//提供链式调用的支持
+		return this;
+	}
+	function EMIT(eventName,args){
+		this._events = this._events || {};
+		//事件堆无该事件，结束运行
+		if(!this._events[eventName]){
+			return
+		}
+		for(var i=0,total=this._events[eventName].length;i<total;i++){
+			this._events[eventName][i].apply(this,args);
+		}
+	}
+  /**
+   * 历史记录
+   **/
+  function LOG(max){
+    this.data = [];
+    this.current = -1;
+    this.maxLength = max || 20;
+  }
+  LOG.prototype = {
+    push: function(item){
+      if(this.data.length > this.current + 1){
+        this.data.length = this.current + 1;
+      }
+      this.current++;
+      this.data.push(item);
+      if(this.data.length > this.maxLength){
+        this.data = this.data.slice( -this.maxLength);
+        this.current = this.maxLength - 1;
+      }
+    },
+    undo: function(){
+      if(this.current < 0){
+        return;
+      }
+      return this.data[--this.current];
+    },
+    redo: function (){
+      if(this.data.length > this.current){
+        return this.data[++this.current];
+      }else{
+        return null;
+      }
+    }
+  };
 	var action_config = {
 		//加粗
-    bold : {
-			insert : '**{{加粗}}**'
-		},
+    bold : '**{{加粗}}**',
     //斜体
-		italic : {
-			insert : '*{{斜体}}*'
-		},
+		italic : '*{{斜体}}*',
     //链接
-		link : {
-			insert : '[{{链接文字}}](http://)'
-		},
+		link : '[{{链接文字}}](http://)',
     //图片
-		image : {
-			insert : '![{{图片描述}}](http://)'
-		},
+		image : '![{{图片描述}}](http://)',
     //代码
-		code : {
-			insert : '`code`'
-		},
+		code :  '`code`',
     //代码域
-		precode : {
-			insert : '\n\n```javascript\n{{//some code……}}\n```'
-		},
-    tab : {
-      insert : '  '
+		precode : '\n\n```javascript\n{{//some code……}}\n```',
+    tab : '  ',
+    redo : function(){
+      this.redo();
+    },
+    undo : function(){
+      this.undo();
     }
 	};
   var keyCode_config = {
@@ -88,6 +133,8 @@
     c75 : 'precode',
     cs75 : 'code',
     c76 : 'link',
+    c89 : 'redo',
+    c90 : 'undo'
   };
   /**
    * 设置输入框属性
@@ -97,8 +144,11 @@
     elem.autocapitalize = 'none';
     elem.autocorrect = 'off';
   }
+  
   /**
    * 编辑类
+   *  change:任何字符改动都会触发
+   *  input: 用户输入才会触发
    *
    **/
   function EDITOR($area,param){
@@ -106,12 +156,17 @@
     var me = this;
     
     this._$textarea = $area;
-    this.onchange = param.onchange || null;
+    //事件中心
+		this._events = {};
+    //历史记录
+    this._log = new LOG(20);
     //设置输入框属性
+    this.content = '';
     setAreaProp(this._$textarea[0]);
     //绑定快捷键
     var inputDelay;
     this._$textarea.on('keydown',function(e){
+      //监听热键
       var key = (e.ctrlKey ? 'c' : '') + (e.shiftKey ? 's' : '') + e.keyCode;
       if(keyCode_config[key]){
         me.action(keyCode_config[key]);
@@ -119,14 +174,57 @@
       }else{
         clearTimeout(inputDelay);
         inputDelay = setTimeout(function(){
-          me.onchange && me.onchange.call(this,$(me._$textarea).val());
-        },200);
+          var cont = $(me._$textarea).val();
+          if(cont != me.content){
+            me.emit('change',[cont]);
+            me.emit('input',[cont]);
+            me.content = cont;
+          }
+        },100);
       }
+    });
+    
+    this.content = this._$textarea.val();
+    
+    //记录初始状态
+    this._logMe();
+    //当进行输入操作时，记录状态
+    this.on('input',function(val){
+      me._logMe(val);
     });
   }
   EDITOR.prototype = {
+    on : ON,
+		emit : EMIT,
+    redo : function(){
+      var step = this._log.redo();
+      this.writeStep(step);
+    },
+    undo : function(){
+      var step = this._log.undo();
+      this.writeStep(step);
+    },
+    //记录当前状态
+    _logMe: function(val){
+      this._log.push({
+        selection : utils.getPosition(this._$textarea[0]),
+        content: val || this._$textarea.val()
+      });
+    },
+    //绘制当前步骤
+    writeStep: function (step){
+      if(!step || !step.content){
+        return
+      }
+      this._$textarea.val(step.content);
+      this.content = step.content;
+      this.emit('change',[step.content]);
+      if(step.selection){
+        utils.setPosition(this._$textarea[0],step.selection[0],(step.selection[1] - step.selection[0]));
+      }
+    },
 		getContent : function(){
-			var content = $(this._$textarea).val();
+			var content = this._$textarea.val();
 			localStorage.setItem('mditor',content);
 			return content;
 		},
@@ -137,17 +235,20 @@
 		},
     insert : function(txt){
       utils.insertTxt(this._$textarea[0],txt);
+      me.emit('change',[$(me._$textarea).val()]);
     },
 		action : function(type){
-			if( !action_config[type]){
-				return;
-			}
-			var selection_txt = utils.Selection(this._$textarea[0])[2];
-			var txt = action_config[type]['insert'];
-			txt = txt.replace(/{{(.+?)}}/,function(a,b){
-				return selection_txt ? selection_txt : b;
-			});
-			utils.insertTxt(this._$textarea[0],txt);
+			var config = action_config[type];
+      if(typeof(config) == 'string'){
+        var selection_txt = utils.getPosition(this._$textarea[0])[2];
+        config = config.replace(/{{(.+?)}}/,function(a,b){
+				  return selection_txt ? selection_txt : b;
+        });
+        utils.insertTxt(this._$textarea[0],config);
+        this._logMe();
+      }else if(typeof(config) == 'function'){
+        config.call(this);
+      }
 		}
 	};
   
@@ -167,10 +268,9 @@
 		this._$viewer = this._$viewScreen.find('.md_html');
     
 		this.closeFn = param['closeFn'] || null;
-    this.editor = new EDITOR(this._$textarea,{
-      onchange : function(){
-        me.render();
-      }
+    this.editor = new EDITOR(this._$textarea);
+    this.editor.on('change',function(){
+      me.render();
     });
 		//初始化
 		$('body').append(this._$dom);
@@ -231,15 +331,15 @@
     this._$viewer = this._$dom.find('.mditor-mini-preview');
     this._$btn_preview = this._$dom.find('.mditor-btn-preview');
     this._$btn_edit = this._$dom.find('.mditor-btn-edit');
-    this.editor = new EDITOR(this._$textarea,{
-      onchange: param.onchange || null
-    });
+
 		
     this._$viewer.addClass(previewClass);
     //将编辑器dom放置在textarea前
     this._$textarea.before(this._$dom);
     //再将textarea移入编辑器内
     this._$dom[0].appendChild(this._$textarea[0]);
+    
+    this.editor = new EDITOR(this._$textarea);
     //全屏
     this._$dom.on('click','.mditor-btn-full',function(){
       new Full({
