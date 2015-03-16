@@ -50,11 +50,7 @@ function isNum(ipt){
 ```javascript
 var editor = new mditor(document.getElementByID('mditor'),{
   //自定义显示效果class
-  previewClass : 'article',
-  //内容变动回调
-  onchange : function(content){
-    //……
-  }
+  previewClass : 'article'
 });
 ```
 
@@ -74,4 +70,9 @@ editor.preview();
 
 //返回编辑界面
 editor.edit();
+
+//监听内容变动回调
+editor.on('change', function(content){
+  //……
+});
 ```
