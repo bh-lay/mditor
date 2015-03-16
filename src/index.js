@@ -7,16 +7,16 @@
  **/
 
 
-(function(global,doc,editor_factory,selection_factory,showdown_factory){
+(function(global,doc,editor_factory,selection_factory,maked_factory){
   var utils = selection_factory(doc);
-	var showdown = showdown_factory();
+	var maked = maked_factory();
 	
-	var mditor = editor_factory(global,doc,utils,showdown);
+	var mditor = editor_factory(global,doc,utils,maked);
 	global.mditor = global.mditor || mditor;
 	global.define && define(function(){
 		return mditor;
 	});
-})(window,document,function(window,document,utils,Showdown){
+})(window,document,function(window,document,utils,maked){
 	var localStorage = window.localStorage || {
 		getItem : function(){},
 		setItem : function(){}
@@ -132,8 +132,7 @@
 		},
 		getHtml : function(){
 			var text = this.getContent();
-			var converter = new Showdown.converter();
-		 	var html = converter.makeHtml(text);
+		 	var html = maked(text);
 		 	return html;
 		},
     insert : function(txt){
@@ -292,4 +291,4 @@
     }
 	};
   return MINI;
-},requires('selection.min.js'),requires('showdown.min.js'));
+},requires('selection.min.js'),requires('maked.min.js'));
