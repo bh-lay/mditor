@@ -71,25 +71,6 @@ define(function(doc){
 		}
 	})();
 	
-	
-	/**	 
-	 * @method Selection set or get texarea position
-	 * @param {Object} textarea jquery dom
-	 * @param {Number} [start]
-	 * @param {Number} [end]
-	 * 
-	 **/
-	function Selection(){
-		var tarea = arguments[0];
-		if(tarea.tagName != 'TEXTAREA'){
-			return
-		}
-		if(arguments['length'] > 1){
-			setPosition(tarea,arguments[1],arguments[2]);
-		}else{
-			return getPosition(tarea);
-		}
-	}
 	/**	 
 	 * @method insertTxt
 	 * @param {Object} dom jquery dom
