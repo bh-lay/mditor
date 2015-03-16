@@ -70,9 +70,4 @@ editor.preview();
 
 //返回编辑界面
 editor.edit();
-
-//监听内容变动回调
-editor.on('change', function(content){
-  //……
-});
 ```
