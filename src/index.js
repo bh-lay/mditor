@@ -91,7 +91,7 @@
       }
     },
     undo: function(){
-      if(this.current < 0){
+      if(this.current <= 0){
         return;
       }
       return this.data[--this.current];
