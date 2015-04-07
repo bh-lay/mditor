@@ -4,16 +4,6 @@ body{
   margin: 0;
   padding: 0;
 }
-.header{
-  padding: 80px 0;
-  background :#06a;
-  text-align: center;
-  color: #fff;
-}
-.header h1{
-  font-size: 40px;
-  margin-bottom: .3em;
-}
 
 .introduce{
   padding: 50px 0;
@@ -33,17 +23,47 @@ body{
   padding: 50px 0;
 }
 .sectionA{
-  
+  background :#06a; 
+}
+
+.sectionA .header{
+  margin-bottom: 40px;
+  text-align: center;
+  color: #fff;
+}
+.sectionA .header h1{
+  margin: 1em 0 .3em;
+  font-size: 40px;
+  font-weight: normal;
 }
 .sectionA textarea{
   width: 400px;
   height: 200px;
 }
+.sectionA input{
+  border: none;
+  padding: 0 2em;
+  background: #fff;
+  line-height: 30px;
+  font-family: inherit;
+  font-size: 12px;
+}
+.sectionA .mditor-mini{
+  border:none;
+}
 .sectionB{
   padding: 30px 0;
-  background: #eee;
+  background: #f4f4f4;
 }
-
+.sectionB h3{
+  margin: 0 0 .5em;
+  font-size: 16px;
+  font-weight: normal;
+}
+.sectionB p{
+  margin: 0;
+  font-size: 12px;
+}
 
 .btn {
   display: inline-block;
