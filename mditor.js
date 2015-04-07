@@ -2,7 +2,7 @@
  * @author bh-lay
  * 
  * @github https://github.com/bh-lay/mditor
- * @modified 2015-3-16 19:10
+ * @modified 2015-4-1 13:32
  * 
  **/
 
@@ -91,7 +91,7 @@
       }
     },
     undo: function(){
-      if(this.current < 0){
+      if(this.current <= 0){
         return;
       }
       return this.data[--this.current];
