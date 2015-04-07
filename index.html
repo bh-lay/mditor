@@ -3,9 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-	<title>mditor</title>
-	<link rel="stylesheet" href="src/page.css?v=1">
+	<meta name="keywords" content="mditor,markdown,editor编辑器" />
+	<meta name="description" content="一款轻量级的markdown编辑器" />
+  <title>mditor 一款轻量级的markdown编辑器</title>
+  <link rel="stylesheet" href="src/page.css?v=1">
 	<link rel="stylesheet" href="src/article.css">
+  <link rel="stylesheet" href="src/xcode.css" />
 </head>
 <body>
 <div class="section sectionA">
@@ -64,8 +67,7 @@ Mditor是一个轻量级的markdown编辑器。取名自markdown + editor，用�
  */
 function isNum(ipt){
     return (ipt !== '') &amp;&amp; (ipt == +ipt) ? true : false;
-}
-    </code></pre>
+}</code></pre>
 
     <hr>
 
@@ -87,8 +89,7 @@ function isNum(ipt){
   var ele_textarea = document.getElementByID('mditor');
   //实例化Mditor
   var editor = new mditor(ele_textarea);
-&lt;/script&gt;
-    </code></pre>
+&lt;/script&gt;</code></pre>
 
     <h2>高级操作</h2>
 
@@ -99,8 +100,7 @@ function isNum(ipt){
     <pre><code class="javascript">var editor = new mditor(document.getElementByID('mditor'),{
   //自定义显示效果class
   previewClass : 'article'
-});
-    </code></pre>
+});</code></pre>
 
     <h3>二、可以通过javascript对实例化后的Mditor进行操作，如：</h3>
 
@@ -117,20 +117,21 @@ editor.insert('**挤啊挤**')
 editor.preview();
 
 //返回编辑界面
-editor.edit();
-    </code></pre>
+editor.edit();</code></pre>
   </div>
 </div>
 <div class="section sectionD">
    <div class="wrapper">
     <h3>使用资源</h3>
-    <p><strong>selection：</strong>处理textarea的选择与选择获取，插入字符等相关操作的小类库<a href="https://github.com/bh-lay/Selection">查看源码</a></p>
-    <p><strong>marked：</strong>A markdown parser and compiler. Built for speed.<a href="https://github.com/chjj/marked">查看源码</a></p>
+    <p><strong>selection：</strong>处理textarea的选择与选择获取，插入字符等相关操作的小类库<a target="_blank" href="https://github.com/bh-lay/Selection">查看源码</a></p>
+    <p><strong>marked：</strong>A markdown parser and compiler. Built for speed.<a target="_blank" href="https://github.com/chjj/marked">查看源码</a></p>
    </div>
 </div>
+	<script type="text/javascript" src="src/highlight.js"></script>
 	<script type="text/javascript" src="src/jquery.js"></script>
 	<script type="text/javascript" src="src/mditor.js"></script>
 	<script type="text/javascript">
+		hljs.initHighlighting();
 		var editor = new mditor($('.areaA')[0]);
     function getContent(){
       alert(editor.getContent());

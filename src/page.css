@@ -50,6 +50,7 @@ body{
 }
 .sectionA .mditor-mini{
   border:none;
+  box-shadow: 2px 2px 6px rgba(0,0,0,.5);
 }
 .sectionB{
   padding: 30px 0;
