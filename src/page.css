@@ -23,7 +23,7 @@ body{
   padding: 50px 0;
 }
 .sectionA{
-  background :#06a; 
+  background :#135; 
 }
 
 .sectionA .header{
@@ -63,6 +63,22 @@ body{
 .sectionB p{
   margin: 0;
   font-size: 12px;
+}
+.sectionD{
+  padding: 30px 0;
+  background: #eee;
+}
+.sectionD h3{
+  margin: 0 0 .5em;
+  font-size: 16px;
+  font-weight: normal;
+}
+.sectionD p{
+  margin: 0;
+  font-size: 12px;
+}
+.sectionD p a{
+  padding: 0 .5em;
 }
 
 .btn {
