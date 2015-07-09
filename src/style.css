@@ -112,27 +112,33 @@
 }
 .mditor-mini-bar{
   height: 40px;
-  line-height: 35px;
   background: #eee;
 }
 .mditor-mini-tab{
   float: left;
 }
-.mditor-mini-bar a{
-  display: block;
-  float: left;
+/* 按钮 */
+.mditor-btn{
+  display: inline-block;
+  vertical-align: middle;
   padding: 0 2.4em;
   height: 40px;
-  background: #eee;
+  line-height: 38px;
   color: #333;
   font-size: 14px;
   text-decoration: none;
 }
-.mditor-mini-bar a span{
+.mditor-btn span{
   display: inline-block;
   vertical-align: middle;
   height: 24px;
   line-height: 24px;
+}
+.mditor-btn.active{
+  background: #fff;
+}
+.mditor-btn:hover{
+  background: #f4f4f4;
 }
 .mditor-btn-preview i{
   background-position: -15px 0;
@@ -140,12 +146,18 @@
 .mditor-btn-full i{
   background-position: -30px 0;
 }
-.mditor-mini-bar a:hover{
-  background: #f4f4f4;
+/* 链接 */
+.mditor-link{
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 1em;
+  height: 40px;
+  line-height: 38px;
+  color: #555;
+  font-size: 14px;
+  text-decoration: none;
 }
-.mditor-mini-bar a.active{
-  background: #fff;
-}
+
 .mditor-mini-side{
   float: right;
 }

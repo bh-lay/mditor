@@ -1,0 +1,8 @@
+- 撤销 `Ctrl + z`
+- 恢复 `Ctrl + y`
+- **加粗文字** `Ctrl + B`
+- *斜体文字* `Ctrl + I`
+- 链接 `Ctrl + L`
+- 图片 `Ctrl + G`
+- `code` `Ctrl + Shift + K`
+- 代码块 `Ctrl + K`：

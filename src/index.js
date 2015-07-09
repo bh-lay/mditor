@@ -21,9 +21,10 @@
 		setItem : function(){}
 	};
 	
-	var editor_tpl = requires('template/fullScreen.html');
-	var mini_tpl = requires('template/mini.html');
-	var style_css = requires('style.css');
+	var editor_tpl = requires('template/fullScreen.html'),
+			mini_tpl = requires('template/mini.html'),
+			style_css = requires('style.css'),
+			help_md = requires('help.md');
 	
   // 创建style标签
 	function createStyleSheet(cssStr,attr){
@@ -348,7 +349,9 @@
           me._$textarea.val(this.editor.getContent());
           me.render();
         }
-      });
+      }).on('click','.mditor-help',function(){
+				
+			});
     });
     //预览
     this._$btn_preview.on('click',function(){
