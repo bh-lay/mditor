@@ -23,8 +23,7 @@
 	
 	var editor_tpl = requires('template/fullScreen.html'),
 			mini_tpl = requires('template/mini.html'),
-			style_css = requires('style.css'),
-			help_md = requires('help.md');
+			style_css = requires('style.css');
 	
   // 创建style标签
 	function createStyleSheet(cssStr,attr){
@@ -278,7 +277,7 @@
     this._$textarea.val(content);
 		this.render();
 		
-		this._$dom.find('.exist_fullscreen').on('click',function(){
+		this._$dom.find('.mditor-close').on('click',function(){
       me.close();
     });
     var isAdapt = false;
@@ -331,6 +330,7 @@
     this._$viewer = this._$dom.find('.mditor-mini-preview');
     this._$btn_preview = this._$dom.find('.mditor-btn-preview');
     this._$btn_edit = this._$dom.find('.mditor-btn-edit');
+		this._$help = me._$dom.find('.mditor-mini-help');
 
 		
     this._$viewer.addClass(previewClass);
@@ -349,10 +349,12 @@
           me._$textarea.val(this.editor.getContent());
           me.render();
         }
-      }).on('click','.mditor-help',function(){
-				
-			});
-    });
+      });
+    }).on('click','.mditor-help',function(){
+			me._$help.fadeIn(80);
+		}).on('click','.mditor-close',function(){
+			me._$help.fadeOut(100);
+		});
     //预览
     this._$btn_preview.on('click',function(){
       me.preview();

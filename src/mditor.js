@@ -2,7 +2,7 @@
  * @author bh-lay
  * 
  * @github https://github.com/bh-lay/mditor
- * @modified 2015-7-9 16:4
+ * @modified 2015-7-9 19:47
  * 
  **/
 
@@ -21,10 +21,9 @@
 		setItem : function(){}
 	};
 	
-	var editor_tpl = '<div class="mditor_fullScreen"><div class="mditor_input"><textarea></textarea></div><div class="mditor_view"><div class="md_html"></div></div><div class="mditor_toolBar"><a href="javascript:void(0)" title="退出全屏" class="exist_fullscreen">×</a></div></div>',
-			mini_tpl = '<div class="mditor-mini"><div class="mditor-mini-bar"><div class="mditor-mini-tab"><a href="javascript:void(0)" title="编辑" class="mditor-btn mditor-btn-edit active"><i class="mditor-icon "></i><span>编辑</span></a><a href="javascript:void(0)" title="预览" class="mditor-btn mditor-btn-preview"><i class="mditor-icon "></i><span>预览</span></a></div><div class="mditor-mini-side"><a href="javascript:void(0)" title="帮助" class="mditor-link mditor-help">help</a><a href="javascript:void(0)" title="全屏" class="mditor-btn mditor-btn-full"><i class="mditor-icon "></i></a></div></div><div class="mditor-mini-preview"></div></div>',
-			style_css = '.mditor-icon{display:inline-block;width:15px;height:15px;margin-right:5px;vertical-align:middle;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAPCAYAAABwfkanAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAqtJREFUeNrUllmIjWEYx883xjAyGGtjKZQL0mkkuSAiFJncMBcYIs2NZA2RpexTk2WSseRopETCnKLckQuDso7cWHJlG9myc/we/b/T29t3zpkckqd+8513+573fd7/83wTpFKp2P9mhfYnCIJsc2xwDEyEMrgO+/7lYQNznmPTZkm4A4dgJ1xh3ba8nQdBA4/v8B7uWTAipk2HsdDBgozfubEcEauAKTAMDkAX9Z+2dfmCnYI49Ic+UBxBL40PgP22rjDLhkdBNeyAG1AKR2ER3HKi5a7pB1Vy8g1+QHt4aQeFpnCiNv0cPsNy6Cwfvr2DD1ALD9OajrAhsBo2y1ECrsE5qIMnEWvmwAwdcA98gTbwEabCKmiGdc4aO0yJDpnJSkQ3eOOe2LVB0vAktWugQb/LNDbCuWKzZeqPq10ufe6FSvWV6vAJx2873U6jciVKHiv0bpNo0a913qa7a0KV2hvVjikaSSWFq8t56u+qeXG1R8JA730xbXq947e35tRkiPRCjZeHfgu8a0hIe6bdpTBcydhDsjgMF72XjoaV8ErtydJek54nlMyhrbGbyqfqFDj12nR4WRubCeNhmsat74wO5NsC6CjpmJ1XhMNIVyoXQtuq/AjlYbq3sLfNII9i53tR5NbpIxJ6hZLJkmoWvNXVXFCkY172h9VjMUyAtXBbV1mt6mE3c1LyqdUG58vvJn6fhQ2tCLBVsaGsqw+rhxXuFmX4YFiiDTeqGtTleOFuVYItcBOOwy6neliZHAd3Tc9eDllJe9yKkteiOemS90jyqJfDB3re95xks2NwCWYr8m6dfgHb4aq3pqckYjfw1ckL1zpJIoHklpZHUvrtK82Zs6dKsEj7E/97eJ/xZgUt52c83PRBOj7BM9Xp14pW7G9u+nftpwADABwSFeQIwYanAAAAAElFTkSuQmCC)}.mditor-overflow{overflow:hidden !important;}.mditor_fullScreen{background:#444;position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:50000;font-family:"Microsoft Yahei";}.mditor_fullScreen textarea::selection{background:#000;}.mditor_fullScreen textarea::-moz-selection{background:#000;}.mditor_toolBar{position:absolute;top:0px;left:0px;width:100%;height:0;}.exist_fullscreen{display:block;position:absolute;width:40px;height:40px;top:10px;right:20px;text-align:center;text-decoration:none;color:#aaa;font:bold 28px/40px "simsun";transition:0.1s;}.exist_fullscreen:hover{background:#eee;color:#333;text-decoration:none;}.exist_fullscreen:active{background:#aaa;color:#fff;}.mditor_input{position:absolute;top:0px;left:0px;width:50%;height:100%;}.mditor_input textarea{position:absolute;display:block;box-sizing:border-box;top:0;left:0;width:100%;height:100%;margin:0px;padding:20px 15px 20px 26px;border:none;resize:none;background:#232323;color:#e6e1dc;font-size:16px;font-family:inherit;line-height:1.6;}.mditor_input textarea:focus{box-shadow:1px 1px 10px #000;outline:none;}.mditor_view{position:absolute;top:0px;right:0px;width:50%;height:100%;overflow:auto;background:#fff;}.mditor_view .md_html{padding:20px;}.mditor-mini{background:#fff;border:1px solid #ddd;font-family:"Microsoft Yahei";}.mditor-mini-bar{height:40px;background:#eee;}.mditor-mini-tab{float:left;}.mditor-btn{display:inline-block;vertical-align:middle;padding:0 2.4em;height:40px;line-height:38px;color:#333;font-size:14px;text-decoration:none;}.mditor-btn span{display:inline-block;vertical-align:middle;height:24px;line-height:24px;}.mditor-btn.active{background:#fff;}.mditor-btn:hover{background:#f4f4f4;}.mditor-btn-preview i{background-position:-15px 0;}.mditor-btn-full i{background-position:-30px 0;}.mditor-link{display:inline-block;vertical-align:middle;padding:0 1em;height:40px;line-height:38px;color:#555;font-size:14px;text-decoration:none;}.mditor-mini-side{float:right;}.mditor-mini-preview{display:none;min-height:200px;padding:30px 20px;}.mditor-mini textarea{display:block;box-sizing:border-box;width:100%;min-height:300px;resize:vertical;padding:20px;font-size:14px;font-family:inherit;border:none;}.mditor-mini textarea:focus{outline:none;}@media screen and (max-width:700px){.mditor_input{width:100%;}.mditor_view{width:100%;display:none;}.mditor_preview{visibility:visible;}.mditor_viewer{left:0px;}}',
-			help_md = undefined;
+	var editor_tpl = '<div class="mditor_fullScreen"><div class="mditor_input"><textarea></textarea></div><div class="mditor_view"><div class="md_html"></div></div><div class="mditor_toolBar"><a href="javascript:void(0)" title="退出全屏" class="mditor-close">×</a></div></div>',
+			mini_tpl = '<div class="mditor-mini"><div class="mditor-mini-bar"><div class="mditor-mini-tab"><a href="javascript:void(0)" title="编辑" class="mditor-btn mditor-btn-edit active"><i class="mditor-icon "></i><span>编辑</span></a><a href="javascript:void(0)" title="预览" class="mditor-btn mditor-btn-preview"><i class="mditor-icon "></i><span>预览</span></a></div><div class="mditor-mini-side"><a href="javascript:void(0)" title="帮助" class="mditor-link mditor-help">help</a><a href="javascript:void(0)" title="全屏" class="mditor-btn mditor-btn-full"><i class="mditor-icon "></i></a></div></div><div class="mditor-mini-preview"></div><div class="mditor-mini-help"><a href="javascript:void(0)" class="mditor-close">×</a><ul><li>撤销 <code>Ctrl + z</code></li><li>恢复 <code>Ctrl + y</code></li><li><strong>加粗文字</strong><code>Ctrl + B</code></li><li><em>斜体文字</em><code>Ctrl + I</code></li><li>链接 <code>Ctrl + L</code></li><li>图片 <code>Ctrl + G</code></li><li><code>code</code><code>Ctrl + Shift + K</code></li><li>代码块 <code>Ctrl + K</code>：</li></ul></div></div>',
+			style_css = '.mditor-icon{display:inline-block;width:15px;height:15px;margin-right:5px;vertical-align:middle;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAPCAYAAABwfkanAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAqtJREFUeNrUllmIjWEYx883xjAyGGtjKZQL0mkkuSAiFJncMBcYIs2NZA2RpexTk2WSseRopETCnKLckQuDso7cWHJlG9myc/we/b/T29t3zpkckqd+8513+573fd7/83wTpFKp2P9mhfYnCIJsc2xwDEyEMrgO+/7lYQNznmPTZkm4A4dgJ1xh3ba8nQdBA4/v8B7uWTAipk2HsdDBgozfubEcEauAKTAMDkAX9Z+2dfmCnYI49Ic+UBxBL40PgP22rjDLhkdBNeyAG1AKR2ER3HKi5a7pB1Vy8g1+QHt4aQeFpnCiNv0cPsNy6Cwfvr2DD1ALD9OajrAhsBo2y1ECrsE5qIMnEWvmwAwdcA98gTbwEabCKmiGdc4aO0yJDpnJSkQ3eOOe2LVB0vAktWugQb/LNDbCuWKzZeqPq10ufe6FSvWV6vAJx2873U6jciVKHiv0bpNo0a913qa7a0KV2hvVjikaSSWFq8t56u+qeXG1R8JA730xbXq947e35tRkiPRCjZeHfgu8a0hIe6bdpTBcydhDsjgMF72XjoaV8ErtydJek54nlMyhrbGbyqfqFDj12nR4WRubCeNhmsat74wO5NsC6CjpmJ1XhMNIVyoXQtuq/AjlYbq3sLfNII9i53tR5NbpIxJ6hZLJkmoWvNXVXFCkY172h9VjMUyAtXBbV1mt6mE3c1LyqdUG58vvJn6fhQ2tCLBVsaGsqw+rhxXuFmX4YFiiDTeqGtTleOFuVYItcBOOwy6neliZHAd3Tc9eDllJe9yKkteiOemS90jyqJfDB3re95xks2NwCWYr8m6dfgHb4aq3pqckYjfw1ckL1zpJIoHklpZHUvrtK82Zs6dKsEj7E/97eJ/xZgUt52c83PRBOj7BM9Xp14pW7G9u+nftpwADABwSFeQIwYanAAAAAElFTkSuQmCC)}.mditor-overflow{overflow:hidden !important;}.mditor_fullScreen{background:#444;position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:50000;font-family:"Microsoft Yahei";}.mditor_fullScreen textarea::selection{background:#000;}.mditor_fullScreen textarea::-moz-selection{background:#000;}.mditor_toolBar{position:absolute;top:0px;left:0px;width:100%;height:0;}.mditor-close{display:block;position:absolute;width:40px;height:40px;top:10px;right:20px;text-align:center;text-decoration:none;color:#aaa;font:bold 28px/40px "simsun";transition:0.1s;}.mditor-close:hover{background:#eee;color:#333;text-decoration:none;}.mditor-close:active{background:#aaa;color:#fff;}.mditor_input{position:absolute;top:0px;left:0px;width:50%;height:100%;}.mditor_input textarea{position:absolute;display:block;box-sizing:border-box;top:0;left:0;width:100%;height:100%;margin:0px;padding:20px 15px 20px 26px;border:none;resize:none;background:#232323;color:#e6e1dc;font-size:16px;font-family:inherit;line-height:1.6;}.mditor_input textarea:focus{box-shadow:1px 1px 10px #000;outline:none;}.mditor_view{position:absolute;top:0px;right:0px;width:50%;height:100%;overflow:auto;background:#fff;}.mditor_view .md_html{padding:20px;}.mditor-mini{position:relative;background:#fff;border:1px solid #ddd;font-family:"Microsoft Yahei";}.mditor-mini-bar{height:40px;background:#eee;}.mditor-mini-tab{float:left;}.mditor-btn{display:inline-block;vertical-align:middle;padding:0 2.4em;height:40px;line-height:38px;color:#333;font-size:14px;text-decoration:none;}.mditor-btn span{display:inline-block;vertical-align:middle;height:24px;line-height:24px;}.mditor-btn:hover{background:#f4f4f4;}.mditor-btn.active{background:#fff;}.mditor-btn-preview i{background-position:-15px 0;}.mditor-btn-full i{background-position:-30px 0;}.mditor-link{display:inline-block;vertical-align:middle;padding:0 1em;height:40px;line-height:38px;color:#555;font-size:14px;text-decoration:none;}.mditor-mini-side{float:right;}.mditor-mini-preview{display:none;min-height:200px;padding:30px 20px;}.mditor-mini textarea{display:block;box-sizing:border-box;width:100%;min-height:300px;resize:vertical;padding:20px;font-size:14px;font-family:inherit;border:none;}.mditor-mini textarea:focus{outline:none;}.mditor-mini-help{position:absolute;top:0;left:0;width:100%;height:100%;background:#fff;display:none;}@media screen and (max-width:700px){.mditor_input{width:100%;}.mditor_view{width:100%;display:none;}.mditor_preview{visibility:visible;}.mditor_viewer{left:0px;}}';
 	
   // 创建style标签
 	function createStyleSheet(cssStr,attr){
@@ -278,7 +277,7 @@
     this._$textarea.val(content);
 		this.render();
 		
-		this._$dom.find('.exist_fullscreen').on('click',function(){
+		this._$dom.find('.mditor-close').on('click',function(){
       me.close();
     });
     var isAdapt = false;
@@ -331,6 +330,7 @@
     this._$viewer = this._$dom.find('.mditor-mini-preview');
     this._$btn_preview = this._$dom.find('.mditor-btn-preview');
     this._$btn_edit = this._$dom.find('.mditor-btn-edit');
+		this._$help = me._$dom.find('.mditor-mini-help');
 
 		
     this._$viewer.addClass(previewClass);
@@ -349,10 +349,12 @@
           me._$textarea.val(this.editor.getContent());
           me.render();
         }
-      }).on('click','.mditor-help',function(){
-				
-			});
-    });
+      });
+    }).on('click','.mditor-help',function(){
+			me._$help.fadeIn(80);
+		}).on('click','.mditor-close',function(){
+			me._$help.fadeOut(100);
+		});
     //预览
     this._$btn_preview.on('click',function(){
       me.preview();
