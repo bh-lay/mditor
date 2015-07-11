@@ -23,7 +23,7 @@
 	
 	var editor_tpl = requires('template/fullScreen.html'),
 			mini_tpl = requires('template/mini.html'),
-			style_css = requires('style.css');
+			style_css = requires('css/style.css');
 	
   // 创建style标签
 	function createStyleSheet(cssStr,attr){
@@ -395,4 +395,4 @@
     }
 	};
   return MINI;
-},requires('selection.min.js'),requires('maked.min.js'));
+},requires('js/selection.min.js'),requires('js/maked.min.js'));
