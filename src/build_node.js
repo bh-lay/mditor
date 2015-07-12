@@ -86,3 +86,5 @@ function build(type,filename){
 }
 fs.watch('./',build);
 fs.watch('./template/',build);
+fs.watch('./css/',build);
+fs.watch('./js/',build);
