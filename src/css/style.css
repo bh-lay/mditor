@@ -190,6 +190,30 @@
 	background: #fff;
 	display: none;
 }
+.mditor-help-txt{
+	width: 300px;
+	margin: auto;
+	padding: 30px 20px;
+}
+.mditor-help-txt h3{
+	margin: 0 0 20px;
+	padding: 10px;
+	text-align: center;
+	font-size: 20px;
+	border-bottom: 1px solid #eee;
+}
+.mditor-help-txt p{
+	margin: 0;
+	line-height: 24px;
+	font-size: 14px;
+}
+.mditor-help-txt b{
+	display: inline-block;
+	width: 47%;
+	padding-right: 15px;
+	text-align: right;
+	font-weight: normal;
+}
 @media screen and (max-width: 700px){
 	.mditor_input{width: 100%;}
 	.mditor_view{width: 100%;display: none;}
