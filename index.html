@@ -69,20 +69,17 @@ Mditor是一个轻量级的markdown编辑器。取名自markdown + editor，用�
 function isNum(ipt){
     return (ipt !== '') &amp;&amp; (ipt == +ipt) ? true : false;
 }</code></pre>
-
-    <hr>
-
-    <h2>如何使用</h2>
-
+  </div>
+</div>
+<div class="section sectionD">
+  <div class="wrapper article">
+    <h2>快速使用</h2>
+		<p>在编辑过程中，markdown格式的内容会自动更新到原始的textarea中。</p>
     <h3>第一步、页面内放置待使用的文本域textarea</h3>
-
     <pre><code class="html">&lt;textarea id="mditor"&gt;……&lt;/textarea&gt;
     </code></pre>
-
     <h3>第二步、引入jQuery和Mditor，并初始化，</h3>
-
-    <p>注：因为后续Mditor会逐渐脱离对jQuery的依赖，参数请使用原生dom对象，而非jQuery对象。</p>
-
+    <p>注：参数请使用原生dom对象，而非jQuery对象。</p>
     <pre><code class="html">&lt;script type="text/javascript" src="src/jquery.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="src/mditor.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript"&gt;
@@ -91,10 +88,13 @@ function isNum(ipt){
   //实例化Mditor
   var editor = new mditor(ele_textarea);
 &lt;/script&gt;</code></pre>
-
+  </div>
+</div>
+<div class="section sectionE">
+  <div class="wrapper article">
     <h2>高级操作</h2>
 
-    <p>为了保证编辑、发布的显示效果一致，需要按照对应站点文章样式的css来展示编辑时的效果，默认显示效果class为<code>article</code>，可参照下面定义方式更改类名。</p>
+    <p>为了保证编辑、发布的显示效果一致，需要按照特定的文章样式来展示编辑时的效果，默认显示效果class为<code>article</code>，可参照下面定义方式更改预览类名。</p>
 
     <h3>一、实例化Mditor时，可以传入自定义参数</h3>
 
@@ -121,7 +121,7 @@ editor.preview();
 editor.edit();</code></pre>
   </div>
 </div>
-<div class="section sectionD">
+<div class="section sectionF">
    <div class="wrapper">
     <h3>使用资源</h3>
     <p><strong>selection：</strong>处理textarea的选择与选择获取，插入字符等相关操作的小类库<a target="_blank" href="https://github.com/bh-lay/Selection">查看源码</a></p>

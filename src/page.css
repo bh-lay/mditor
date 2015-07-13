@@ -54,7 +54,8 @@ body{
 }
 .sectionB{
   padding: 30px 0;
-  background: #f4f4f4;
+  background: #fefefe;
+  box-shadow: 0 0px 3px rgba(0,0,0,0.4);
 }
 .sectionB h3{
   margin: 0 0 .5em;
@@ -66,61 +67,75 @@ body{
   font-size: 12px;
 }
 .sectionD{
+	background: #eee;
+}
+.sectionD .article{
+	color: #000;
+}
+.sectionE{
+}
+.sectionF{
   padding: 30px 0;
-  background: #eee;
+  background: #333;
 }
-.sectionD h3{
+.sectionF h3{
   margin: 0 0 .5em;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: normal;
+	color: #fff;
 }
-.sectionD p{
+.sectionF p{
   margin: 0;
-  font-size: 12px;
+  font-size: 14px;
+	color: #fff;
 }
-.sectionD p a{
+.sectionF p a{
   padding: 0 .5em;
+	color: #28d;
 }
-.btn{
+
+.btn {
   display: inline-block;
   min-width: 40px;
-  height: 32px;
-  padding: 0 1em;
-  line-height: 33px;
+  padding: .5em 1em;
+  line-height: 1.5em;
   font-size: 14px;
   text-align: center;
   color: #333;
   background: #fff;
   border: 1px solid #d3d3d3;
-  box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
   border-radius: 2px;
   white-space: nowrap;
   outline: none;
   text-decoration: none;
-  transition: .08s;
+  transition: all 0.08s linear;
+  -moz-transition: all 0.08s linear;
+  -webkit-transition: all 0.08s linear;
+  -o-transition: all 0.08s linear;
 }
 .btn:hover {
   color: #333;
   text-decoration: none;
   border-color: #c3c3c3;
-  box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+  background: #f4f4f4;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
 }
-.btn.focusme{
+.btn.focusme {
   border: none;
-  padding: 1px 1em;
   color: #fff;
   background: #fa7d3c;
   background: -moz-linear-gradient(top, #fa7d3c 0%, #f55f10 100%);
-  background: -webkit-linear-gradient(top, #fa7d3c 0%,#f55f10 100%);
-  background: -o-linear-gradient(top, #fa7d3c 0%,#f55f10 100%);
-  background: -ms-linear-gradient(top, #fa7d3c 0%,#f55f10 100%);
-  background: linear-gradient(top bottom, #fa7d3c 0%,#f55f10 100%);
+  background: -webkit-linear-gradient(top, #fa7d3c 0%, #f55f10 100%);
+  background: -o-linear-gradient(top, #fa7d3c 0%, #f55f10 100%);
+  background: -ms-linear-gradient(top, #fa7d3c 0%, #f55f10 100%);
+  background: linear-gradient(top bottom, #fa7d3c 0%, #f55f10 100%);
 }
 .btn.focusme:hover {
   background: #f4722e;
   background: -moz-linear-gradient(top, #f4722e 0%, #f05807 100%);
-  background: -webkit-linear-gradient(top, #f4722e 0%,#f05807 100%);
-  background: -o-linear-gradient(top, #f4722e 0%,#f05807 100%);
-  background: -ms-linear-gradient(top, #f4722e 0%,#f05807 100%);
-  background: linear-gradient(top bottom, #f4722e 0%,#f05807 100%);
+  background: -webkit-linear-gradient(top, #f4722e 0%, #f05807 100%);
+  background: -o-linear-gradient(top, #f4722e 0%, #f05807 100%);
+  background: -ms-linear-gradient(top, #f4722e 0%, #f05807 100%);
+  background: linear-gradient(top bottom, #f4722e 0%, #f05807 100%);
 }
