@@ -23,7 +23,7 @@
 </head>
 <body>
 <div class="wrapper">
-  <textarea class="areaA">
+  <textarea id="areaA">
 欢迎使用Mditor
 ======
 Mditor是一个轻量级的markdown编辑器。取名自markdown + editor，用于实现页面markdown输入框的便利操作。
@@ -41,15 +41,15 @@ Mditor是一个轻量级的markdown编辑器。取名自markdown + editor，用�
 - 代码块`Ctrl + K`：
 </textarea>
   <br/>
-  <input type="button" value="获取内容" onclick="getContent()" />
-  <input type="button" value="获取内容" onclick="getHtml()" />
+  <input type="button" value="获取markdown" onclick="getContent()" />
+  <input type="button" value="获取html" onclick="getHtml()" />
   <input type="button" value="插入内容" onclick="insert()" />
 </textarea>
 </div>
 	<script type="text/javascript" src="src/js/jquery.js"></script>
 	<script type="text/javascript" src="src/mditor.js"></script>
 	<script type="text/javascript">
-		var editor = new mditor($('.areaA')[0]);
+		var editor = new mditor(document.getElementById('areaA'));
     function getContent(){
       alert(editor.getContent());
     }
