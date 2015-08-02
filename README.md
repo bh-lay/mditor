@@ -9,7 +9,7 @@ Mditor是一款轻量级的markdown编辑器。取名自markdown + editor，用�
 - **加粗文字** `Ctrl + B`
 - *斜体文字* `Ctrl + I`
 - [链接文字](http://bh-lay.com/) `Ctrl + L`
-- 图片![暴漫](src/baoman.jpg) `Ctrl + G`
+- 图片![暴漫](src/images/baoman.jpg) `Ctrl + G`
 - `code` `Ctrl + Shift + K`
 - 代码块 `Ctrl + K`：
 ``` javascript
@@ -28,7 +28,7 @@ function isNum(ipt){
 ##如何使用
 ###第一步、页面内放置待使用的文本域textarea
 ```html
-<textarea id="mditor">……</textarea>
+<textarea id="md_editor">……</textarea>
 ```
 ###第二步、引入jQuery和Mditor，并初始化，
  注：因为后续Mditor会逐渐脱离对jQuery的依赖，参数请使用原生dom对象，而非jQuery对象。
@@ -38,7 +38,7 @@ function isNum(ipt){
 <script type="text/javascript" src="src/mditor.js"></script>
 <script type="text/javascript">
   //获取textarea dom对象
-  var ele_textarea = document.getElementByID('mditor');
+  var ele_textarea = document.getElementById('md_editor');
   //实例化Mditor
   var editor = new mditor(ele_textarea);
 </script>
@@ -48,7 +48,7 @@ function isNum(ipt){
 
 ###一、实例化Mditor时，可以传入自定义参数
 ```javascript
-var editor = new mditor(document.getElementByID('mditor'),{
+var editor = new mditor(document.getElementById('md_editor'),{
   //自定义显示效果class
   previewClass : 'article'
 });
