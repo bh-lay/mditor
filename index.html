@@ -19,7 +19,7 @@
       <a href="https://github.com/bh-lay/mditor" target="_blank" class="btn focusme">Github</a>&nbsp;&nbsp;
       <a href="src/mditor.js" target="_blank" class="btn" download>下载</a>
     </div>
-    <textarea class="areaA">
+    <textarea class="md_editor">
 欢迎使用Mditor
 ======
 Mditor是一个轻量级的markdown编辑器。取名自markdown + editor，用于实现页面markdown输入框的便利操作。
@@ -76,7 +76,7 @@ function isNum(ipt){
     <h2>快速使用</h2>
 		<p>在编辑过程中，markdown格式的内容会自动更新到原始的textarea中。</p>
     <h3>第一步、页面内放置待使用的文本域textarea</h3>
-    <pre><code class="html">&lt;textarea id="mditor"&gt;……&lt;/textarea&gt;
+    <pre><code class="html">&lt;textarea id="md_editor"&gt;……&lt;/textarea&gt;
     </code></pre>
     <h3>第二步、引入jQuery和Mditor，并初始化，</h3>
     <p>注：参数请使用原生dom对象，而非jQuery对象。</p>
@@ -84,7 +84,7 @@ function isNum(ipt){
 &lt;script type="text/javascript" src="src/mditor.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript"&gt;
   //获取textarea dom对象
-  var ele_textarea = document.getElementByID('mditor');
+  var ele_textarea = document.getElementByID('md_editor');
   //实例化Mditor
   var editor = new mditor(ele_textarea);
 &lt;/script&gt;</code></pre>
@@ -98,7 +98,7 @@ function isNum(ipt){
 
     <h3>一、实例化Mditor时，可以传入自定义参数</h3>
 
-    <pre><code class="javascript">var editor = new mditor(document.getElementByID('mditor'),{
+    <pre><code class="javascript">var editor = new mditor(document.getElementByID('md_editor'),{
   //自定义显示效果class
   previewClass : 'article'
 });</code></pre>
@@ -132,17 +132,17 @@ editor.edit();</code></pre>
 	<script type="text/javascript" src="src/jquery.js"></script>
 	<script type="text/javascript" src="src/mditor.js"></script>
 	<script type="text/javascript">
-		hljs.initHighlighting();
-		var editor = new mditor($('.areaA')[0]);
-    function getContent(){
-      alert(editor.getContent());
-    }
-    function getHtml(){
-      alert(editor.getHtml());
-    }
-    function insert(){
-      editor.insert(' **XXXXX** ');
-    }
+hljs.initHighlighting();
+var editor = new mditor($('.md_editor')[0]);
+function getContent(){
+  alert(editor.getContent());
+}
+function getHtml(){
+  alert(editor.getHtml());
+}
+function insert(){
+  editor.insert(' **XXXXX** ');
+}
 	</script>
 </body>
 </html>
