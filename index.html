@@ -84,7 +84,7 @@ function isNum(ipt){
 &lt;script type="text/javascript" src="src/mditor.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript"&gt;
   //获取textarea dom对象
-  var ele_textarea = document.getElementByID('md_editor');
+  var ele_textarea = document.getElementById('md_editor');
   //实例化Mditor
   var editor = new mditor(ele_textarea);
 &lt;/script&gt;</code></pre>
@@ -98,7 +98,7 @@ function isNum(ipt){
 
     <h3>一、实例化Mditor时，可以传入自定义参数</h3>
 
-    <pre><code class="javascript">var editor = new mditor(document.getElementByID('md_editor'),{
+    <pre><code class="javascript">var editor = new mditor(document.getElementById('md_editor'),{
   //自定义显示效果class
   previewClass : 'article'
 });</code></pre>
